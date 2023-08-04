@@ -1,6 +1,6 @@
 package com.example.backend.Controller;
 
-import com.example.backend.Service.Deshboard.DeshboardService;
+import com.example.backend.Service.Dashboard.DeshboardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;

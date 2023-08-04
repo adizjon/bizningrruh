@@ -20,7 +20,7 @@ public class JwtServices {
         UUID id = user.getId();
         Map<String, Object> claims = new HashMap<>();
         String jwt = Jwts.builder()
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 15))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setSubject(id.toString())
                 .addClaims(claims)
@@ -33,7 +33,7 @@ public class JwtServices {
         UUID id = user.getId();
         Map<String, Object> claims = new HashMap<>();
         String jwt = Jwts.builder()
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 7))
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setSubject(id.toString())
                 .addClaims(claims)

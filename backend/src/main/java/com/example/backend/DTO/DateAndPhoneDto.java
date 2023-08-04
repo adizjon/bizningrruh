@@ -11,8 +11,8 @@ import java.util.Collection;
 @NoArgsConstructor
 public class DateAndPhoneDto {
     private String phone;
-    private String localDate;
 
+    private String localDate;
 
     public Collection<Object> getCurrentDate() {
         return null;

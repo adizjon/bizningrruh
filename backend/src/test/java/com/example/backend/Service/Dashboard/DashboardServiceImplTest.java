@@ -1,4 +1,4 @@
-package com.example.backend.Service.Deshboard;
+package com.example.backend.Service.Dashboard;
 
 import com.example.backend.DTO.DateAndPhoneDto;
 import com.example.backend.Entity.User;

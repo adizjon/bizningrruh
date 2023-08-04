@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class AuthController {
     private final AuthService service;
-    private final JwtServices jwtServices;
 
     @PostMapping("/login")
     public HttpEntity<?> login(@RequestBody UserDTO dto) {
@@ -34,7 +33,5 @@ public class AuthController {
     public HttpEntity<?> getMe(@RequestParam(defaultValue = "") String accessToken){
         return service.getMe(accessToken);
     }
-
-
 
 }

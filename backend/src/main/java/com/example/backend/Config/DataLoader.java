@@ -35,7 +35,7 @@ public class DataLoader implements CommandLineRunner {
             List<Role> roles = roleRepo.saveAll(tempRoles);
             User user = new User(
                     "asadbek",
-                    "998948668666",
+                    "998990453027",
                     encoder.encode("123"),
                     roles
             );

@@ -13,7 +13,10 @@ import java.util.UUID;
 @NoArgsConstructor
 public class ResUser {
     private UUID id;
+
     private String phone;
+
     private String password;
+
     private List<Role> roles;
 }

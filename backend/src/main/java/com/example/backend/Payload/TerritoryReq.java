@@ -1,4 +1,4 @@
-package com.example.backend.DTO;
+package com.example.backend.Payload;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TerritoryDto {
+public class TerritoryReq {
     private String title;
 
     private String region;
