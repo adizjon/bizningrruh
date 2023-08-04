@@ -204,8 +204,8 @@ const Table = ({
 
       {/* 👇 Table Data 👇  */}
 
-          <table className="table mytable">
-            <thead>
+          <table className="table table-bordered " style={{margin:25,width:930}}>
+            <thead className={"table-dark"}>
               <tr>
                 {columns.map((item) => (
                   <th key={item.id} className={item.show ? "active" : "hidden"}>
@@ -215,7 +215,7 @@ const Table = ({
                 {additionalColumns ? <th>More</th> : ""}
               </tr>
             </thead>
-            <tbody>
+            <tbody className={"table-caption"}>
               {data.map((item) => (
                 <tr key={item.id}>
                   {columns.map((col) => (

@@ -10,6 +10,7 @@ import NotFound404 from "./NotFound/NotFound404";
 import Territory from "./Components/Territory";
 import Table from "./Components/Table/Table";
 import Test from "./test";
+import MenuListComposition from "./Components/Admin/MenuListCompositioon";
 function App() {
     const [data, setData] = useState([]);
 
@@ -140,6 +141,7 @@ function App() {
     return (
         <Routes>
             <Route path={"/"} element={<Login/>}/>
+            <Route path={"/aa"} element={<MenuListComposition/>}/>
             <Route path={"/admin"} element={<Admin/>}>
                 <Route path={"/admin/settings"} element={<SettingPanel/>}>
                     <Route path={"/admin/settings/territory"} element={<Territory/>}/>
