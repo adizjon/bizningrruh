@@ -202,7 +202,7 @@ function Index(props) {
 
 
     return (
-        <div>
+        <div style={{maxWidth:"100%",maxHeight:"100%",overflow:"scroll"}}>
             <select onChange={(e) => searching(e.target.value)} name="" id="" className="form-select">
                 <option value="true">Active</option>
                 <option value="false">In Active</option>

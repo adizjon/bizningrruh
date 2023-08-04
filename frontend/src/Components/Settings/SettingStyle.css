@@ -1,0 +1,22 @@
+
+ul li:hover{
+    border: 3px solid;
+    background-color: #787878;
+}
+div .biggestDiv{
+    width: 1300px;
+    height: 900px;
+    margin-left: 100px;
+}
+nav{
+    position: absolute;
+    left: 160px;
+}
+div .rightDivFlex{
+    width: 1000px;
+    height: 600px;
+    /*border: 1px solid;*/
+    border-radius: 10px;
+    background-color: #e7e4e4;
+    margin-left: 200px;
+}

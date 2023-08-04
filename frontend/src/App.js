@@ -141,9 +141,10 @@ function App() {
         <Routes>
             <Route path={"/"} element={<Login/>}/>
             <Route path={"/admin"} element={<Admin/>}>
-                <Route path={"/admin/settings"} element={<SettingPanel/>} />
-                    {/*<Route path={"/admin/settings/territory"} element={<Territory/>}/>*/}
-                {/*</Route>*/}
+                <Route path={"/admin/settings"} element={<SettingPanel/>}>
+                    <Route path={"/admin/settings/territory"} element={<Territory/>}/>
+
+                </Route>
             </Route>
             <Route path={"*"} element={<NotFound404/>}/>
             <Route path={"/territory"} element={<Territory/>}/>
