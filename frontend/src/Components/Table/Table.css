@@ -1,0 +1,26 @@
+.hidden {
+  visibility: hidden;
+}
+.universal_table {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.pagination {
+  overflow-x: scroll;
+  display: flex;
+  flex-wrap: wrap;
+}
+.mytable {
+  height: 400px !important;
+  border: 2px solid black;
+  padding: 10px;
+  overflow: scroll !important;
+}
+.column_order {
+  width: 200px;
+  height: 40px;
+  border: none;
+  background-color: #fff;
+  border-radius: 8px;
+}
