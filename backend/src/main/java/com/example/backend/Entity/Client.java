@@ -1,7 +1,5 @@
 package com.example.backend.Entity;
 
-import com.example.backend.Entity.CustomerCategory;
-import com.example.backend.Entity.Teretory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,13 +20,13 @@ public class Client {
     private String address;
     private String phone;
     private String tin;
-    private String companyname;
-    private String longe;
+    private String companyName;
+    private String longititude;
     private String lat;
     @ManyToOne
 //    ???
     private CustomerCategory customerCategory;
     @ManyToOne
-    private Teretory teretory;
+    private Territory territory;
 //    ???
 }

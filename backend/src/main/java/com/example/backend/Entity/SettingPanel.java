@@ -20,4 +20,9 @@ public class SettingPanel {
     private UUID id;
     private String settingCategory;
     private String navigation;
+
+    public SettingPanel(String settingCategory, String navigation) {
+        this.settingCategory = settingCategory;
+        this.navigation = navigation;
+    }
 }

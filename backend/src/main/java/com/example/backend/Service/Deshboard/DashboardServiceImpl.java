@@ -10,12 +10,10 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class DeshboardServiceImpl implements DeshboardService {
+public class DashboardServiceImpl implements DeshboardService {
     private final UserRepo userRepo;
     @Override
     public HttpEntity<?> getProjecttion() {

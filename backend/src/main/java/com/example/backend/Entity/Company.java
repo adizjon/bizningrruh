@@ -14,11 +14,17 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String region;
+
     private String company_name;
+
     private String name;
+
     private String supportPhone;
+
     private String email;
+
     private String address;
 
     public Company(String region, String company_name, String name, String supportPhone, String email, String address) {

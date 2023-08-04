@@ -11,8 +11,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "teretory")
-public class Teretory {
+@Table(name = "territory")
+public class Territory {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -22,7 +22,7 @@ public class Teretory {
     private Double latitude;
     private Boolean active;
     private String code;
-    public Teretory(String title, String region, Double longitude, Double latitude, Boolean active, String code) {
+    public Territory(String title, String region, Double longitude, Double latitude, Boolean active, String code) {
         this.title = title;
         this.region = region;
         this.longitude = longitude;
