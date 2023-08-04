@@ -24,12 +24,12 @@ function SettingPanel(props) {
 
     return (
         <div className={"biggestDiv w-52 py-7 px-10 bg-white"}>
-            <div>
+            <div className={"panel"}>
                 <nav>
                     <ul>
-                        <div className={"text-center bg-amber-500 w-52 h-9"}>SETTINGS</div>
-                        {settings.map((item, index) => <li onClick={() => nextPage(item.navigation)} key={index}
-                                                           className={"text-center bg-gray-700 mt-2 text-white w-52 h-9"}><p >{item.settingCategory}</p></li>)}
+                        <div className={"text-center settingDiv bg-amber-500 w-52 h-9"}><h2 className={"p-2 text-white"}>SETTINGS</h2></div>
+                        {settings.map((item, index) => <button onClick={() => nextPage(item.navigation)} key={index}
+                                                           className={"text-center button "}><p >{item.settingCategory}</p></button>)}
                     </ul>
                 </nav>
             </div>

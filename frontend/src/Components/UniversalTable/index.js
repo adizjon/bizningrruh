@@ -67,7 +67,7 @@ function Index(props) {
                             {
                                 props.columns.map((column, index) => {
                                     return <li onClick={() => hide(index)}
-                                               className={'px-2 py-1 ' + (checkColumns(column.title) ? 'bg-white hover:bg-slate-100' : 'bg-blue-700 text-white hover:bg-blue-800')}
+                                               className={'px-2 py-1 ' + (checkColumns(column.title) ? 'bg-white' : 'bg-blue-700 text-white')}
                                                key={column.key}>{column.title.toLowerCase()}</li>
                                 })
                             }
