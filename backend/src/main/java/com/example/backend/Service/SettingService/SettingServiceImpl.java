@@ -14,4 +14,5 @@ public class SettingServiceImpl implements SettingService{
     public HttpEntity<?> getSettings() {
         return ResponseEntity.ok(settingRepo.findAll());
     }
+
 }
