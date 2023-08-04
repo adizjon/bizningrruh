@@ -1,7 +1,7 @@
 package com.example.backend.Service.TerritoryService;
 
 import com.example.backend.DTO.TerritoryDto;
-import com.example.backend.Entity.Teretory;
+import com.example.backend.Entity.Territory;
 import com.example.backend.Repository.TerritoryRepo;
 import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.Row;
@@ -34,7 +34,7 @@ public class TerritoryServiceImpl implements TerritoryService {
         Double latitude = territoryDto.getLatitude();
         boolean active = territoryDto.getActive();
         String code = territoryDto.getCode();
-        territoryRepo.save(new Teretory(title, region, longitude, latitude, active, code));
+        territoryRepo.save(new Territory(title, region, longitude, latitude, active, code));
     }
 
     @Override
@@ -44,7 +44,7 @@ public class TerritoryServiceImpl implements TerritoryService {
 
     @Override
     public void editTerritory(UUID id, TerritoryDto territoryDto) {
-        Teretory territory = territoryRepo.findById(id).get();
+        Territory territory = territoryRepo.findById(id).get();
         territory.setTitle(territoryDto.getTitle());
         territory.setRegion(territoryDto.getRegion());
         territory.setLongitude(territoryDto.getLongitude());

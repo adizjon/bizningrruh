@@ -8,8 +8,6 @@ import com.example.backend.Repository.CompanyRepo;
 import com.example.backend.Repository.RoleRepo;
 import com.example.backend.Repository.SettingRepo;
 import com.example.backend.Repository.UserRepo;
-import com.example.backend.Service.Deshboard.DeshboardService;
-import com.example.backend.Service.Deshboard.DeshboardServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -32,7 +30,6 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         List<Role> all = roleRepo.findAll();
         if (all.size() == 0) {
-
             List<Role> tempRoles = new ArrayList<>();
             tempRoles.add(new Role("ROLE_SUPER_ADMIN"));
             List<Role> roles = roleRepo.saveAll(tempRoles);
@@ -42,75 +39,39 @@ public class DataLoader implements CommandLineRunner {
                     encoder.encode("123"),
                     roles
             );
-            SettingPanel settingPanel1 = new SettingPanel(
-                    UUID.randomUUID(),
-                    "Company Profile",
-                    "/companyProfile"
-            );
-
-            SettingPanel settingPanel2 = new SettingPanel(
-                    UUID.randomUUID(),
-                    "Payment Method",
-                    "/paymentMethod"
-            );
-            SettingPanel settingPanel3 = new SettingPanel(
-                    UUID.randomUUID(),
-                    "Units of measurement",
-                    "/unitsOfMeasurement"
-            );
-            SettingPanel settingPanel4=new SettingPanel(
-                    UUID.randomUUID(),
-                    "Territory",
-                    "/territory"
-            );
-
-            SettingPanel settingPanel5 = new SettingPanel(
-                    UUID.randomUUID(),
-                    "Customer Category",
-                    "/customerCategory"
-            );
-            settingRepo.save(settingPanel5);
-            SettingPanel settingPanel6 = new SettingPanel(
-                    UUID.randomUUID(),
-                    "Client type",
-                    "/clientType"
-            );
-            SettingPanel settingPanel7 = new SettingPanel(
-                    UUID.randomUUID(),
-                    "Company Profile",
-                    "/company"
-            );
-            SettingPanel settingPanel8 = new SettingPanel(
-                    UUID.randomUUID(),
-                    "Product Category",
-                    "/productCategory"
-            );
-            SettingPanel settingPanel9 = new SettingPanel(
-                    UUID.randomUUID(),
-                    "Product",
-                    "/product"
-            );
-            SettingPanel settingPanel10 = new SettingPanel(
-                    UUID.randomUUID(),
-                    "Price Type",
-                    "/priceType"
-            );
-            SettingPanel settingPanel11 = new SettingPanel(
-                    UUID.randomUUID(),
-                    "Price",
-                    "/price"
-            );
-            SettingPanel settingPanel12 = new SettingPanel(
-                    UUID.randomUUID(),
-                    "Reasons for rejection",
-                    "/reasonsForRejection"
-            );
-
             userRepo.save(user);
-            settingRepo.saveAll(List.of(settingPanel1, settingPanel2, settingPanel3, settingPanel4, settingPanel5, settingPanel6, settingPanel7, settingPanel8, settingPanel9, settingPanel10, settingPanel11, settingPanel12));
-            Company company = new Company("buxoro", "shiftacademy", "asadbek", "948668666", "adizjonovasadbek906@gmail.com", "buxoro kidoblar olami yonida");
-            companyRepo.save(company);
         }
 
+        List<SettingPanel> settingPanel = new ArrayList<>(
+                List.of(
+                        new SettingPanel("Company Profile", "/companyProfile"),
+                        new SettingPanel("Payment Method", "/paymentMethod"),
+                        new SettingPanel("Territory Method", "/territory"),
+                        new SettingPanel("Units of measurement", "/unitsOfMeasurement"),
+                        new SettingPanel("Customer Category", "/customerCategory"),
+                        new SettingPanel("Client type", "/clientType"),
+                        new SettingPanel("Company Profile", "/company"),
+                        new SettingPanel("Product Category", "/productCategory"),
+                        new SettingPanel("Product", "/product"),
+                        new SettingPanel("Price Type", "/priceType"),
+                        new SettingPanel("Price", "/price"),
+                        new SettingPanel("Reasons for rejection", "/reasonsForRejection")
+                )
+        );
+        if (settingRepo.findAll().size() == 0) {
+            settingRepo.saveAll(settingPanel);
+        }
+
+        if (companyRepo.findAll().size() == 0) {
+            Company company = new Company(
+                    "buxoro",
+                    "shiftacademy",
+                    "asadbek",
+                    "948668666",
+                    "adizjonovasadbek906@gmail.com",
+                    "buxoro kidoblar olami yonida"
+            );
+            companyRepo.save(company);
+        }
     }
 }

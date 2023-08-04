@@ -1,21 +1,15 @@
 package com.example.backend.Service.TerritoryService;
 
 import com.example.backend.DTO.TerritoryDto;
-import com.example.backend.Entity.Teretory;
+import com.example.backend.Entity.Territory;
 import com.example.backend.Repository.TerritoryRepo;
-import com.example.backend.Service.TerritoryService.TerritoryServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.core.io.InputStreamResource;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -44,12 +38,12 @@ class TerritoryServiceImplTest {
         territoryDto.setLatitude(1.32);
         territoryDto.setLongitude(1.35);
         territoryService.addTerritory(territoryDto);
-        verify(territoryRepo, times(1)).save(any(Teretory.class));
+        verify(territoryRepo, times(1)).save(any(Territory.class));
     }
     @Test
     void testGetTerritories() {
         // Mock the behavior of territoryRepo.findAll()
-        List<Teretory> territories = new ArrayList<>();
+        List<Territory> territories = new ArrayList<>();
         // Add some territories to the list
         when(territoryRepo.findAll()).thenReturn(territories);
 
@@ -63,7 +57,7 @@ class TerritoryServiceImplTest {
         UUID territoryId = UUID.randomUUID();
         TerritoryDto territoryDto = new TerritoryDto();
         // Set the properties of territoryDto
-        Teretory territory = new Teretory();
+        Territory territory = new Territory();
         // Set the properties of territory
         when(territoryRepo.findById(territoryId)).thenReturn(Optional.of(territory));
         territoryService.editTerritory(territoryId, territoryDto);
