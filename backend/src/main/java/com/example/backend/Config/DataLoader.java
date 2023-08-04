@@ -46,7 +46,7 @@ public class DataLoader implements CommandLineRunner {
                 List.of(
                         new SettingPanel("Company Profile", "/companyProfile"),
                         new SettingPanel("Payment Method", "/paymentMethod"),
-                        new SettingPanel("Territory Method", "/territory"),
+                        new SettingPanel("Territory", "/territory"),
                         new SettingPanel("Units of measurement", "/unitsOfMeasurement"),
                         new SettingPanel("Customer Category", "/customerCategory"),
                         new SettingPanel("Client type", "/clientType"),

@@ -202,34 +202,39 @@ function Index(props) {
 
 
     return (
-        <div style={{maxWidth:"100%",maxHeight:"100%",overflow:"scroll"}}>
-            <select onChange={(e) => searching(e.target.value)} name="" id="" className="form-select">
-                <option value="true">Active</option>
-                <option value="false">In Active</option>
-            </select>
+        <div style={{maxWidth:"120%",maxHeight:"100%",overflow:"scroll"}}>
 
-            <UniversalModal width={800} height={400} visible={isVisible} inputs={inputs} yandexMap={YMap}
+
+            <UniversalModal width={100} height={400} visible={isVisible} inputs={inputs} yandexMap={YMap}
                             setVisible={() => handleVisible(false)} buttons={buttons}/>
 
             {/*<UniversalTable data={testData} columns1={columns}*/}
             {/*                api={"https://jsonplaceholder.typicode.com/users?_page={page}&_limit={limit}"}/>}*/}
 
-
-            <button onClick={() => handleVisible(true)}
-                    className={"bg-green-600 text-white rounded-md px-5 py-2 mb-20"}>add territory
+            <button style={{marginLeft:850,marginTop:20}} onClick={() => handleVisible(true)}
+                    className={"bg-green-600 text-white rounded-md px-1 py-2 "}>add territory
             </button>
+               <div style={{marginLeft:20,marginTop:-40}}>
+                   <select  onChange={(e) => searching(e.target.value)} name="" id="" className="form-select w-25">
+                       <option value="true">Active</option>
+                       <option value="false">In Active</option>
+                   </select>
+               </div>
 
 
-            <Table
-                dataProps={data}
-                columnsProps={columns2}
-                pagination={true}
-                changeSizeMode={true}
-                paginationApi={"https://jsonplaceholder.typicode.com/comments?_page={page}&_limit={limit}"}
-                columnOrderMode={true}
-                changeSizeModeOptions={[5, 10, 20, 30, 40, 50]}
-            />
 
+           <div style={{marginTop:50}}>
+               <Table
+                   dataProps={data}
+                   columnsProps={columns2}
+                   pagination={true}
+                   changeSizeMode={true}
+                   paginationApi={"https://jsonplaceholder.typicode.com/comments?_page={page}&_limit={limit}"}
+                   columnOrderMode={true}
+                   changeSizeModeOptions={[5, 10, 20, 30, 40, 50]}
+               />
+
+           </div>
 
         </div>
     );
