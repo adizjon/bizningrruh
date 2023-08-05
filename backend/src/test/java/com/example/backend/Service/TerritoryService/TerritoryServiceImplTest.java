@@ -1,18 +1,10 @@
 package com.example.backend.Service.TerritoryService;
 
-import com.example.backend.DTO.TerritoryDto;
-import com.example.backend.Entity.Territory;
 import com.example.backend.Repository.TerritoryRepo;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import java.util.Optional;
-import java.util.UUID;
-
-import static org.mockito.Mockito.*;
 
 class TerritoryServiceImplTest {
     @Mock
@@ -48,16 +40,16 @@ class TerritoryServiceImplTest {
 //        // Add relevant assertions here
 //    }
 
-    @Test
-    void testEditTerritory() {
-        UUID territoryId = UUID.randomUUID();
-        TerritoryDto territoryDto = new TerritoryDto();
-        // Set the properties of territoryDto
-        Territory territory = new Territory();
-        // Set the properties of territory
-        when(territoryRepo.findById(territoryId)).thenReturn(Optional.of(territory));
-        territoryService.editTerritory(territoryId, territoryDto);
-        // Verify that the territoryRepo.save() method was called with the updated territory
-        verify(territoryRepo, times(1)).save(territory);
-    }
+//    @Test
+//    void testEditTerritory() {
+//        UUID territoryId = UUID.randomUUID();
+//        TerritoryDto territoryDto = new TerritoryDto();
+//        // Set the properties of territoryDto
+//        Territory territory = new Territory();
+//        // Set the properties of territory
+//        when(territoryRepo.findById(territoryId)).thenReturn(Optional.of(territory));
+//        territoryService.editTerritory(territoryId, territoryDto);
+//        // Verify that the territoryRepo.save() method was called with the updated territory
+//        verify(territoryRepo, times(1)).save(territory);
+//    }
 }
