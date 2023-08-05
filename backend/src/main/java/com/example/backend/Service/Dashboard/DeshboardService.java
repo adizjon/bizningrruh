@@ -1,4 +1,4 @@
-package com.example.backend.Service.Deshboard;
+package com.example.backend.Service.Dashboard;
 
 import org.springframework.http.HttpEntity;
 

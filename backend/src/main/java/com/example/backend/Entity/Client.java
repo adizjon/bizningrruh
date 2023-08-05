@@ -16,17 +16,24 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     private String name;
+
     private String address;
+
     private String phone;
+
     private String tin;
+
     private String companyName;
-    private String longititude;
-    private String lat;
+
+    private String longitude;
+
+    private String latitude;
+
     @ManyToOne
-//    ???
     private CustomerCategory customerCategory;
+
     @ManyToOne
     private Territory territory;
-//    ???
 }

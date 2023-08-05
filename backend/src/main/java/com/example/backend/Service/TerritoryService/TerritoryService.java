@@ -1,21 +1,19 @@
 package com.example.backend.Service.TerritoryService;
 
 
-import com.example.backend.DTO.TerritoryDto;
-import org.springframework.core.io.InputStreamResource;
+import com.example.backend.Payload.TerritoryReq;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 
-import java.util.List;
+import java.io.IOException;
 import java.util.UUID;
 
 public interface TerritoryService {
-    void addTerritory(TerritoryDto territoryDto);
+    HttpEntity<?> addTerritory(TerritoryReq territoryReq);
 
-    HttpEntity<?> getTerritories();
+    HttpEntity<?> getTerritories(Integer page, Integer size, Boolean active, String search);
 
-    void editTerritory(UUID id, TerritoryDto territoryDto);
+    ResponseEntity<byte[]> downloadTerritoryAsExcel(Integer page, Integer size, Boolean active, String search) throws IOException;
 
-    ResponseEntity<InputStreamResource> uploadEcxel(List<TerritoryDto> territoryPayload);
-
+    HttpEntity<?> editTerritory(UUID id, TerritoryReq territoryReq);
 }

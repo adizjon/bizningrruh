@@ -2,7 +2,6 @@ package com.example.backend.Controller;
 
 import com.example.backend.DTO.UserDTO;
 import com.example.backend.Payload.LoginReq;
-import com.example.backend.Security.JwtServices;
 import com.example.backend.Service.AuthService.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class AuthController {
     private final AuthService service;
-    private final JwtServices jwtServices;
 
     @PostMapping("/login")
     public HttpEntity<?> login(@RequestBody UserDTO dto) {
@@ -34,7 +32,5 @@ public class AuthController {
     public HttpEntity<?> getMe(@RequestParam(defaultValue = "") String accessToken){
         return service.getMe(accessToken);
     }
-
-
 
 }

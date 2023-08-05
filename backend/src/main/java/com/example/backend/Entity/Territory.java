@@ -17,11 +17,17 @@ public class Territory {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String title;
+
     private String region;
+
     private Double longitude;
+
     private Double latitude;
+
     private Boolean active;
+
     private String code;
+
     public Territory(String title, String region, Double longitude, Double latitude, Boolean active, String code) {
         this.title = title;
         this.region = region;
