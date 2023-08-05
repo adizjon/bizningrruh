@@ -4,6 +4,7 @@ import com.example.backend.DTO.ApiResponse;
 import com.example.backend.DTO.ResUser;
 import com.example.backend.DTO.UserDTO;
 import com.example.backend.Entity.Role;
+import com.example.backend.Entity.RoleEnum;
 import com.example.backend.Entity.User;
 import com.example.backend.Payload.LoginReq;
 import com.example.backend.Repository.RoleRepo;
@@ -18,6 +19,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -44,7 +46,7 @@ public class AuthServiceImpl implements AuthService {
         List<Role> roles = new ArrayList<>();
         List<Role> roleUser = roleRepo.findAllByName("ROLE_USER");
         if (roleUser == null) {
-            roles.add(roleRepo.save(new Role(0, "ROLE_USER")));
+            roles.add(roleRepo.save(new Role(0, RoleEnum.ROLE_USER)));
         } else {
             roles.add(roleUser.get(0));
         }
@@ -55,7 +57,6 @@ public class AuthServiceImpl implements AuthService {
                 roles
         );
         usersRepository.save(user);
-
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(dto.getUsername());
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
@@ -80,17 +81,18 @@ public class AuthServiceImpl implements AuthService {
     public HttpEntity<?> login(UserDTO dto) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(dto.getPhone(), dto.getPassword()));
+            User users = usersRepository.findByPhone(dto.getPhone()).orElseThrow(() -> new RuntimeException("Cannot find User With Id:" + dto.getPhone()));
+            List<Role> roles = roleRepo.findAll();
+            String access_token = jwtServices.generateJwtToken(users);
+            String refresh_token = jwtServices.generateJwtRefreshToken(users);
+            Map<String, Object> map = new HashMap<>();
+            map.put("access_token", access_token);
+            map.put("refresh_token", refresh_token);
+            return returningProcess(dto, access_token, map);
         } catch (BadCredentialsException e) {
             return ResponseEntity.ok("BAD_CREDENTIALS");
         }
-        User users = usersRepository.findByPhone(dto.getPhone()).orElseThrow(() -> new RuntimeException("Cannot find User With Id:" + dto.getPhone()));
-        List<Role> roles = roleRepo.findAll();
-        String access_token = jwtServices.generateJwtToken(users);
-        String refresh_token = jwtServices.generateJwtRefreshToken(users);
-        Map<String, Object> map = new HashMap<>();
-        map.put("access_token", access_token);
-        map.put("refresh_token", refresh_token);
-        return returningProcess(dto, access_token, map);
+
     }
 
     private ResponseEntity<String> getStringResponseEntity(UserDTO dto) {
@@ -133,8 +135,8 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public HttpEntity<?> getMe(String accessToken) {
 
-        try{
-            if (Objects.equals(jwtServices.extractSubjectFromJwt(accessToken), "sdsdsd")){
+        try {
+            if (Objects.equals(jwtServices.extractSubjectFromJwt(accessToken), "sdsdsd")) {
                 return ResponseEntity.ok(
                         new ApiResponse(
                                 false,
@@ -146,40 +148,40 @@ public class AuthServiceImpl implements AuthService {
             UUID id = UUID.fromString(jwtServices.extractSubjectFromJwt(accessToken));
             User user = usersRepository.findById(id).orElseThrow();
             for (GrantedAuthority authority : user.getAuthorities()) {
-                if (authority.getAuthority().equals("ROLE_SUPER_ADMIN")){
+                if (authority.getAuthority().equals(RoleEnum.ROLE_SUPER_ADMIN.toString())) {
                     return ResponseEntity.ok(new ApiResponse(
-                            true, "Hello Admin", new ResUser(
-                            user.getId(),
-                            user.getPhone(),
-                            user.getPassword(),
-                            user.getRoles()
-                    )
-                    ));
-                }
-            }
-
-
-        if (jwtServices.extractSubjectFromJwt(accessToken).equals("333aae7133c19eda8f7f61ce07e64281c295df67681b1ed47c9c270a488f94d0")) {
-
-            return ResponseEntity.ok(
-                    new ApiResponse(
-                            false,
-                            "Hello User",
+                            true, "Hello Admin",
                             new ResUser(
                                     user.getId(),
                                     user.getPhone(),
                                     user.getPassword(),
                                     user.getRoles()
                             )
-                    )
-            );
-        } }catch (Exception e) {
+                    ));
+                }
+            }
+
+            if (jwtServices.extractSubjectFromJwt(accessToken).equals("333aae7133c19eda8f7f61ce07e64281c295df67681b1ed47c9c270a488f94d0")) {
+                return ResponseEntity.ok(
+                        new ApiResponse(
+                                false,
+                                "Hello User",
+                                new ResUser(
+                                        user.getId(),
+                                        user.getPhone(),
+                                        user.getPassword(),
+                                        user.getRoles()
+                                )
+                        )
+                );
+            }
+        } catch (Exception e) {
             return null;
         }
         UUID id = UUID.fromString(jwtServices.extractSubjectFromJwt(accessToken));
         User user = usersRepository.findById(id).orElseThrow();
         for (GrantedAuthority authority : user.getAuthorities()) {
-            if (authority.getAuthority().equals("ROLE_SUPER_ADMIN")) {
+            if (authority.getAuthority().equals(RoleEnum.ROLE_SUPER_ADMIN.toString())) {
                 return ResponseEntity.ok(new ApiResponse(
                         true, "Hello Admin", new ResUser(
                         user.getId(),
@@ -204,4 +206,4 @@ public class AuthServiceImpl implements AuthService {
                 )
         );
     }
-    }
+}

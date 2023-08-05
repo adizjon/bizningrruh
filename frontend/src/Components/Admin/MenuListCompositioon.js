@@ -8,8 +8,8 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 import user from "../../Images/user.png";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import {useLocation, useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 
 export default function MenuListComposition() {
     const navigate = useNavigate();
@@ -68,6 +68,11 @@ export default function MenuListComposition() {
         prevOpen.current = open;
     }, [open]);
 
+    function logOut() {
+        localStorage.clear();
+        navigate('/');
+    }
+
     return (
         <Stack direction="row" spacing={2}>
             <Paper>
@@ -82,7 +87,7 @@ export default function MenuListComposition() {
                     aria-haspopup="true"
                     onClick={handleToggle}
                 >
-                    <img style={{ marginLeft: -80 }} width={20} src={user} alt="" />
+                    <img style={{marginLeft: -80}} width={20} src={user} alt=""/>
                 </Button>
                 <Popper
                     open={open}
@@ -92,7 +97,7 @@ export default function MenuListComposition() {
                     transition
                     disablePortal
                 >
-                    {({ TransitionProps, placement }) => (
+                    {({TransitionProps, placement}) => (
                         <Grow
                             {...TransitionProps}
                             style={{
@@ -108,10 +113,9 @@ export default function MenuListComposition() {
                                         aria-labelledby="composition-button"
                                         onKeyDown={handleListKeyDown}
                                     >
-                                        <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                        <MenuItem onClick={handleClose}>My account</MenuItem>
-                                        {/* Add an ID to the Logout MenuItem */}
-                                        <MenuItem id="logout-menu-item" onClick={handleClose}>Logout</MenuItem>
+                                        <MenuItem>Profile</MenuItem>
+                                        <MenuItem>My account</MenuItem>
+                                        <MenuItem id="logout-menu-item" onClick={logOut}>Logout</MenuItem>
                                     </MenuList>
                                 </ClickAwayListener>
                             </Paper>
