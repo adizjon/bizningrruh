@@ -12,7 +12,6 @@ function Index(props) {
     useEffect(() => {
         if (loginReducer.navigateTo !== "" && location.pathname !== loginReducer.navigateTo) {
             navigate(loginReducer.navigateTo)
-            console.clear()
         }
     })
     return (

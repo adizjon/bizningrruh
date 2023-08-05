@@ -31,7 +31,6 @@ const Table = ({
   modalColumns,
   setModalColumns,
 }) => {
-  console.log(columns)
 
 
   const location = useLocation();
