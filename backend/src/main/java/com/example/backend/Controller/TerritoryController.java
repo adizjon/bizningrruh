@@ -16,6 +16,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/territory")
+@CrossOrigin
 @RequiredArgsConstructor
 public class TerritoryController {
     private final TerritoryService territoryService;
