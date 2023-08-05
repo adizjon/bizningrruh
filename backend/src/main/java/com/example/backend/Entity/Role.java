@@ -1,9 +1,6 @@
 package com.example.backend.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,15 +14,15 @@ public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private RoleEnum name;
 
-    public Role(String name) {
+    public Role(RoleEnum name) {
         this.name = name;
     }
 
     @Override
     public String getAuthority() {
-        return name;
+        return name.toString();
     }
-
 }

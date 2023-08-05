@@ -3,6 +3,7 @@ package com.example.backend.Service.AuthService;
 import com.example.backend.DTO.ResUser;
 import com.example.backend.DTO.UserDTO;
 import com.example.backend.Entity.Role;
+import com.example.backend.Entity.RoleEnum;
 import com.example.backend.Entity.User;
 import com.example.backend.Payload.LoginReq;
 import com.example.backend.Repository.RoleRepo;
@@ -56,7 +57,7 @@ class AuthServiceImplTest {
         LoginReq loginReq = new LoginReq("testUser", "testPassword","testPassword");
 
         // Mock the necessary dependencies
-        Role roleUser = new Role(1, "ROLE_USER");
+        Role roleUser = new Role(1, RoleEnum.ROLE_USER);
         when(roleRepo.findAllByName("ROLE_USER")).thenReturn(Collections.singletonList(roleUser));
         when(usersRepository.save(any())).thenReturn(new User(UUID.randomUUID().toString(), "testUser", "testPassword", Collections.singletonList(roleUser)));
 
@@ -83,7 +84,7 @@ class AuthServiceImplTest {
     @Test
     void testLogin() {
         UserDTO userDTO = new UserDTO("testPhone", "testPassword", false);
-        Role roleUser = new Role(1, "ROLE_USER");
+        Role roleUser = new Role(1, RoleEnum.ROLE_USER);
         List<Role> roles = List.of(roleUser);
         User user = new User(UUID.randomUUID().toString(), "testUser", "testPassword", roles);
         String access_token = "access_token";
@@ -164,7 +165,7 @@ class AuthServiceImplTest {
     void testGetMeAsUser() {
         String accessToken = "testAccessToken";
         UUID userId = UUID.randomUUID();
-        User user = new User(userId.toString(), "testUser", "testPassword", List.of(new Role(1, "ROLE_USER")));
+        User user = new User(userId.toString(), "testUser", "testPassword", List.of(new Role(1, RoleEnum.ROLE_USER)));
 
         when(jwtServices.extractSubjectFromJwt(accessToken)).thenReturn(userId.toString());
         when(usersRepository.findById(userId)).thenReturn(java.util.Optional.of(user));
@@ -184,7 +185,7 @@ class AuthServiceImplTest {
     void testGetMeAsAdmin() {
         String accessToken = "testAccessToken";
         UUID userId = UUID.randomUUID();
-        User user = new User(userId.toString(), "testUser", "testPassword", List.of(new Role(2, "ROLE_SUPER_ADMIN")));
+        User user = new User(userId.toString(), "testUser", "testPassword", List.of(new Role(2, RoleEnum.ROLE_SUPER_ADMIN)));
 
         when(jwtServices.extractSubjectFromJwt(accessToken)).thenReturn(userId.toString());
         when(usersRepository.findById(userId)).thenReturn(java.util.Optional.of(user));

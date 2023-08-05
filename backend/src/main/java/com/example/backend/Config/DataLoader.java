@@ -1,9 +1,6 @@
 package com.example.backend.Config;
 
-import com.example.backend.Entity.Company;
-import com.example.backend.Entity.Role;
-import com.example.backend.Entity.SettingPanel;
-import com.example.backend.Entity.User;
+import com.example.backend.Entity.*;
 import com.example.backend.Repository.CompanyRepo;
 import com.example.backend.Repository.RoleRepo;
 import com.example.backend.Repository.SettingRepo;
@@ -31,12 +28,12 @@ public class DataLoader implements CommandLineRunner {
         List<Role> all = roleRepo.findAll();
         if (all.size() == 0) {
             List<Role> tempRoles = new ArrayList<>();
-            tempRoles.add(new Role("ROLE_SUPER_ADMIN"));
+            tempRoles.add(new Role(RoleEnum.ROLE_SUPER_ADMIN));
             List<Role> roles = roleRepo.saveAll(tempRoles);
             User user = new User(
                     "asadbek",
-                    "998990453027",
-                    encoder.encode("123"),
+                    "998948668666",
+                    encoder.encode("12345678"),
                     roles
             );
             userRepo.save(user);

@@ -11,6 +11,7 @@ import Territory from "./Components/Territory";
 import Table from "./Components/Table/Table";
 import Test from "./test";
 import MenuListComposition from "./Components/Admin/MenuListCompositioon";
+import Client from "./Components/Client/Client";
 
 function App() {
     const [data, setData] = useState([]);
@@ -153,6 +154,7 @@ function App() {
             <Route path={"/admin"} element={<Admin/>}>
                 <Route path={"/admin/settings"} element={<SettingPanel/>}>
                     <Route path={"/admin/settings/territory"} element={<Territory/>}/>
+                    <Route path={"/admin/settings/clientType"} element={<Client/>}/>
                 </Route>
             </Route>
             <Route path={"*"} element={<NotFound404/>}/>

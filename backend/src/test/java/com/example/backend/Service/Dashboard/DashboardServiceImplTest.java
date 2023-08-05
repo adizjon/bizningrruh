@@ -1,6 +1,7 @@
 package com.example.backend.Service.Dashboard;
 
 import com.example.backend.DTO.DateAndPhoneDto;
+import com.example.backend.Entity.RoleEnum;
 import com.example.backend.Entity.User;
 import com.example.backend.Repository.UserRepo;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,10 +41,10 @@ public class DashboardServiceImplTest {
         // Mocking the UserRepo.findByRolesName() method
         List<User> roleSuperAdmin = new ArrayList<>();
         roleSuperAdmin.add(user);
-        when(userRepo.findByRolesName("ROLE_SUPER_ADMIN")).thenReturn(roleSuperAdmin);
+        when(userRepo.findByRolesName(RoleEnum.ROLE_SUPER_ADMIN)).thenReturn(roleSuperAdmin);
 
         // Call the method to be tested
-        ResponseEntity<?> responseEntity = (ResponseEntity<?>) deshboardService.getProjecttion();
+        ResponseEntity<?> responseEntity = (ResponseEntity<?>) deshboardService.getDashboardInfo();
 
         // Verify the response status code
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
