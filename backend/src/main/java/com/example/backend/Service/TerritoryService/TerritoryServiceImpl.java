@@ -88,7 +88,7 @@ public class TerritoryServiceImpl implements TerritoryService {
     }
 
     @Override
-    public void editTerritory(UUID id, TerritoryReq territoryReq) {
+    public HttpEntity<?> editTerritory(UUID id, TerritoryReq territoryReq) {
         Optional<Territory> optionalTerritory = territoryRepo.findById(id);
         if (optionalTerritory.isPresent()) {
             Territory territory = optionalTerritory.get();
@@ -98,7 +98,9 @@ public class TerritoryServiceImpl implements TerritoryService {
             territory.setLatitude(territoryReq.getLatitude());
             territory.setActive(territoryReq.getActive());
             territory.setCode(territoryReq.getCode());
-            territoryRepo.save(territory);
+            Territory save = territoryRepo.save(territory);
+            return ResponseEntity.ok(save);
         }
+        return ResponseEntity.notFound().build();
     }
 }

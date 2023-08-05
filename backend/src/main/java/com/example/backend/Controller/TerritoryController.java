@@ -49,7 +49,7 @@ public class TerritoryController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
-    public void editTerritory(@PathVariable UUID id, @RequestBody TerritoryReq territoryReq) {
-        territoryService.editTerritory(id, territoryReq);
+    public HttpEntity<?> editTerritory(@PathVariable UUID id, @RequestBody TerritoryReq territoryReq) {
+       return territoryService.editTerritory(id, territoryReq);
     }
 }

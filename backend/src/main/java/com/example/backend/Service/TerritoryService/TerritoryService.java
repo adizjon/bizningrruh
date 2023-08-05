@@ -13,7 +13,7 @@ public interface TerritoryService {
 
     HttpEntity<?> getTerritories(Integer page, Integer size, Boolean active, String search);
 
-    void editTerritory(UUID id, TerritoryReq territoryDto);
-
     ResponseEntity<byte[]> downloadTerritoryAsExcel(Integer page, Integer size, Boolean active, String search) throws IOException;
+
+    HttpEntity<?> editTerritory(UUID id, TerritoryReq territoryReq);
 }
