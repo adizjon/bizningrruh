@@ -50,7 +50,7 @@ public class ClientServiceImpl implements ClientService{
         editingClient.setTin(clientDto.getTin());
         editingClient.setCompanyName(clientDto.getCompanyName());
         editingClient.setLongitude(clientDto.getLongitude());
-        editingClient.setLat(clientDto.getLat());
+        editingClient.setLatitude(clientDto.getLat());
         editingClient.setCustomerCategory(customerCategoryRepo.findById(clientDto.getCustomerCategoryId()).get());
         editingClient.setTerritory(territoryRepo.findById(clientDto.getTerritoryId()).get());
         return ResponseEntity.ok(editingClient);
