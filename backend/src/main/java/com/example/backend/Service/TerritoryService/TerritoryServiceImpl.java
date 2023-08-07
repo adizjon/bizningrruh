@@ -1,6 +1,5 @@
 package com.example.backend.Service.TerritoryService;
 
-import com.example.backend.DTO.TerritoryDto;
 import com.example.backend.Entity.Territory;
 import com.example.backend.Payload.TerritoryReq;
 import com.example.backend.Repository.TerritoryRepo;
@@ -18,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -88,14 +88,19 @@ public class TerritoryServiceImpl implements TerritoryService {
     }
 
     @Override
-    public void editTerritory(UUID id, TerritoryDto territoryDto) {
-        Territory territory = territoryRepo.findById(id).get();
-        territory.setTitle(territoryDto.getTitle());
-        territory.setRegion(territoryDto.getRegion());
-        territory.setLongitude(territoryDto.getLongitude());
-        territory.setLatitude(territoryDto.getLatitude());
-        territory.setActive(territoryDto.getActive());
-        territory.setCode(territoryDto.getCode());
-        territoryRepo.save(territory);
+    public HttpEntity<?> editTerritory(UUID id, TerritoryReq territoryReq) {
+        Optional<Territory> optionalTerritory = territoryRepo.findById(id);
+        if (optionalTerritory.isPresent()) {
+            Territory territory = optionalTerritory.get();
+            territory.setTitle(territoryReq.getTitle());
+            territory.setRegion(territoryReq.getRegion());
+            territory.setLongitude(territoryReq.getLongitude());
+            territory.setLatitude(territoryReq.getLatitude());
+            territory.setActive(territoryReq.getActive());
+            territory.setCode(territoryReq.getCode());
+            Territory save = territoryRepo.save(territory);
+            return ResponseEntity.ok(save);
+        }
+        return ResponseEntity.notFound().build();
     }
 }

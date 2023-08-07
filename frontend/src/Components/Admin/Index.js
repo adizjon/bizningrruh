@@ -28,17 +28,14 @@ function Index(props) {
     const [phone, setPhone] = useState("")
     const [dashboard2, setDashboard] = useState([])
     const [pagee, setPagee] = useState(false)
-    apiCall({url: "/dashboard", method: "GET"}).then((res) => {
-        console.log(res.data)
-        setPhone(res.data.body.phone)
-        setNowtime(res.data.body.localDate)
-    })
+
     useEffect(() => {
         axios({
             url: "http://localhost:8080/dashboard", method: "get"
         }).then(res => {
             setDashboard([res.data.body])
         })
+
     }, [])
     return (<div>
 

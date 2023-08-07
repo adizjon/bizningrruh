@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Dashboard {
     private final DeshboardService deshboardService;
     @GetMapping
-    public HttpEntity<?> getDeshboard() {
-        return ResponseEntity.ok(deshboardService.getProjecttion());
+    public HttpEntity<?> getDashboard() {
+        return ResponseEntity.ok(deshboardService.getDashboardInfo());
     }
 }

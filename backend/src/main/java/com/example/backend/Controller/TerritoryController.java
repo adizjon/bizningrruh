@@ -4,18 +4,17 @@ import com.example.backend.DTO.TerritoryDto;
 import com.example.backend.Payload.TerritoryReq;
 import com.example.backend.Service.TerritoryService.TerritoryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/territory")
+@CrossOrigin
 @RequiredArgsConstructor
 public class TerritoryController {
     private final TerritoryService territoryService;
@@ -50,7 +49,7 @@ public class TerritoryController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
-    public void editTerritory(@PathVariable UUID id, @RequestBody TerritoryDto territoryDto) {
-        territoryService.editTerritory(id, territoryDto);
+    public HttpEntity<?> editTerritory(@PathVariable UUID id, @RequestBody TerritoryReq territoryReq) {
+       return territoryService.editTerritory(id, territoryReq);
     }
 }

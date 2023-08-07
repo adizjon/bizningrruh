@@ -21,11 +21,14 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+
     private String name;
 
     @Column(unique = true, nullable = false)
     private String phone;
+
     private String password;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 

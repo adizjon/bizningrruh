@@ -7,25 +7,48 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
-import user from "../../Images/user.png"
+import user from "../../Images/user.png";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 
 export default function MenuListComposition() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const location = useLocation();
 
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
+
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
     };
+
     useEffect(() => {
-    }, [])
+
+    }, []);
+
+    const handleLogout = () => {
+        // Clear the localStorage
+        localStorage.clear();
+
+        // Navigate to the logout page (Replace '/logout' with your desired logout route)
+        navigate('/');
+    };
+
     const handleClose = (event) => {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
         }
+<<<<<<< HEAD
+=======
+
+        // Check if the clicked element is the "Logout" MenuItem
+        const logoutMenuItem = document.getElementById('logout-menu-item');
+        if (logoutMenuItem && logoutMenuItem.contains(event.target)) {
+            handleLogout();
+            return;
+        }
+
+>>>>>>> 2f8acbd2a2924039f92aab20941c251bf706b23b
         setOpen(false);
     };
 
@@ -54,10 +77,15 @@ export default function MenuListComposition() {
         prevOpen.current = open;
     }, [open]);
 
+    function logOut() {
+        localStorage.clear();
+        navigate('/');
+    }
+
     return (
         <Stack direction="row" spacing={2}>
             <Paper>
-
+                {/* Put your content inside the Paper component */}
             </Paper>
             <div>
                 <Button
@@ -69,7 +97,6 @@ export default function MenuListComposition() {
                     onClick={handleToggle}
                 >
                     <img style={{marginLeft: -80}} width={20} src={user} alt=""/>
-
                 </Button>
                 <Popper
                     open={open}
@@ -97,7 +124,11 @@ export default function MenuListComposition() {
                                     >
                                         <MenuItem>Profile</MenuItem>
                                         <MenuItem>My account</MenuItem>
+<<<<<<< HEAD
                                         <MenuItem onClick={logOut}>Logout</MenuItem>
+=======
+                                        <MenuItem id="logout-menu-item" onClick={logOut}>Logout</MenuItem>
+>>>>>>> 2f8acbd2a2924039f92aab20941c251bf706b23b
                                     </MenuList>
                                 </ClickAwayListener>
                             </Paper>

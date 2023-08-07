@@ -2,7 +2,6 @@ package com.example.backend.Controller;
 
 import com.example.backend.DTO.UserDTO;
 import com.example.backend.Payload.LoginReq;
-import com.example.backend.Security.JwtServices;
 import com.example.backend.Service.AuthService.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;

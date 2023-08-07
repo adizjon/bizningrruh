@@ -6,7 +6,6 @@ import Drag2 from "./Drag2";
 
 
 function Index(props) {
-    console.log(props.columns)
 
     function checkColumns(name) {
         let column = props.columns.find(column => column.title === name)
