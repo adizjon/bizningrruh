@@ -43,6 +43,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/territory/upload").permitAll()
                                 .requestMatchers("/customerCategory").permitAll()
                                 .requestMatchers("/customerCategory/put/{id}").permitAll()
+                                .requestMatchers("/customerCategory/getInActive/{type}").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(myFilter, UsernamePasswordAuthenticationFilter.class); // Add your custom filter before the default Spring Security filter

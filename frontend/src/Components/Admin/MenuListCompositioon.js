@@ -38,8 +38,6 @@ export default function MenuListComposition() {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
         }
-<<<<<<< HEAD
-=======
 
         // Check if the clicked element is the "Logout" MenuItem
         const logoutMenuItem = document.getElementById('logout-menu-item');
@@ -48,15 +46,10 @@ export default function MenuListComposition() {
             return;
         }
 
->>>>>>> 2f8acbd2a2924039f92aab20941c251bf706b23b
         setOpen(false);
     };
 
-    const logOut = () => {
-        localStorage.removeItem("accessToken")
-        localStorage.removeItem("refreshToken")
-        navigate("/")
-    }
+
 
     function handleListKeyDown(event) {
         if (event.key === 'Tab') {
@@ -124,11 +117,8 @@ export default function MenuListComposition() {
                                     >
                                         <MenuItem>Profile</MenuItem>
                                         <MenuItem>My account</MenuItem>
-<<<<<<< HEAD
                                         <MenuItem onClick={logOut}>Logout</MenuItem>
-=======
                                         <MenuItem id="logout-menu-item" onClick={logOut}>Logout</MenuItem>
->>>>>>> 2f8acbd2a2924039f92aab20941c251bf706b23b
                                     </MenuList>
                                 </ClickAwayListener>
                             </Paper>

@@ -6,18 +6,26 @@ import com.example.backend.Service.CustomerCategory.CustomerCategoryServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("customerCategory")
+@CrossOrigin
 public class CustomerCategoryController {
-    private final CustomerCategoryRepo customerCategoryRepo;
     private final CustomerCategoryServices customerCategoryServices;
+    private final CustomerCategoryRepo customerCategoryRepo;
 
     @GetMapping
     public HttpEntity<?> getCustomerCategory() {
         return ResponseEntity.ok(customerCategoryServices.getCustomerCategory());
+    }
+
+    @GetMapping("/getInActive/{type}")
+    public HttpEntity<?> getCustomerCategoryInActive(@PathVariable Boolean type) {
+    return ResponseEntity.ok(customerCategoryServices.getInType(type));
     }
 
     @PostMapping
@@ -27,11 +35,11 @@ public class CustomerCategoryController {
     }
 
     @PutMapping("/put/{id}")
-    public HttpEntity<?> putCustomerCategory(@RequestBody CustomerCategory customerCategory,@PathVariable Integer id) {
+    public HttpEntity<?> putCustomerCategory(@RequestBody CustomerCategory customerCategory, @PathVariable Integer id) {
         System.out.println("o");
         System.out.println(customerCategory);
         System.out.println(id);
-        customerCategoryServices.putCustomerCategory(id,customerCategory);
+        customerCategoryServices.putCustomerCategory(id, customerCategory);
         return ResponseEntity.ok("o'zgartirildi");
     }
 }
