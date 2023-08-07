@@ -1,8 +1,10 @@
 package com.example.backend.Controller;
 
 import com.example.backend.Payload.ClientDto;
+import com.example.backend.Payload.SearchDto;
 import com.example.backend.Service.ClientService.ClientService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +16,8 @@ import java.util.UUID;
 public class ClientController {
     private final ClientService clientService;
     @GetMapping
-    public HttpEntity<?> getClients(){
-        return clientService.getClients();
+    public HttpEntity<?> getClients(@RequestParam(required = false,defaultValue = "false") Boolean active,@RequestParam(required = false) String quickSearchValue,@RequestParam(required = false,defaultValue = "") Integer page,@RequestParam(required = false,defaultValue = "") Integer size){
+        return clientService.getClients(active,quickSearchValue,page,size);
     }
     @PostMapping
     public HttpEntity<?> postClient(@RequestBody ClientDto clientDto){

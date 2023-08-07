@@ -154,10 +154,7 @@ function App() {
             <Route path={"/admin"} element={<Admin/>}>
                 <Route path={"/admin/settings"} element={<SettingPanel/>}>
                     <Route path={"/admin/settings/territory"} element={<Territory/>}/>
-<<<<<<< HEAD
-=======
                     <Route path={"/admin/settings/clientType"} element={<Client/>}/>
->>>>>>> 2f8acbd2a2924039f92aab20941c251bf706b23b
                 </Route>
             </Route>
             <Route path={"*"} element={<NotFound404/>}/>

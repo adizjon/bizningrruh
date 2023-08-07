@@ -108,12 +108,10 @@ function Index(props) {
     const {loginReducer} = props
     const navigate = useNavigate()
     const location = useLocation()
-<<<<<<< HEAD
     const [supportPhone,setSupportPhone]=useState()
-=======
     const [dashboard, setDashboard] = useState([])
 
->>>>>>> 2f8acbd2a2924039f92aab20941c251bf706b23b
+
     useEffect(() => {
         if (loginReducer.navigateTo !== "" && location.pathname !== loginReducer.navigateTo) {
             navigate(loginReducer.navigateTo)
@@ -122,11 +120,7 @@ function Index(props) {
         axios({
             url: "http://localhost:8080/dashboard", method: "get"
         }).then(res => {
-<<<<<<< HEAD
             setSupportPhone(res.data.body.phone)
-=======
-            setDashboard([res.data.body])
->>>>>>> 2f8acbd2a2924039f92aab20941c251bf706b23b
         })
     })
     return (
@@ -188,13 +182,7 @@ function Index(props) {
                     </div>
                     <div className={"mt-6"}>
                         <hr/>
-<<<<<<< HEAD
                         <h4>Support Service: {supportPhone}</h4>
-=======
-                        {
-                            dashboard.map(item=><h4>Support Service:+{item.phone}</h4>)
-                        }
->>>>>>> 2f8acbd2a2924039f92aab20941c251bf706b23b
                     </div>
                 </form>
             </div>
