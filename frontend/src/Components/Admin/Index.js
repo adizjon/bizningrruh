@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import logo from "../../Images/logo.jpg"
+import logo from "./logo.png"
 import location from "../../Images/location.png"
 import request from "../../Images/request.png"
 import rocked from "../../Images/rocket.png"
@@ -43,17 +43,14 @@ function Index(props) {
     return (<div>
 
         <div className="w-full pl-32 fixed h-[70px] bg-gray-600 text-white flex items-center z-50">
-
             <div>
-                <img style={{borderRadius: "50%", position: "absolute", top: "20px", left: "25px"}}
+                <img style={{borderRadius: "50%", position: "absolute",top:"10px", left: "25px"}}
                      className={"w-[70px] h-[60px]"} src={logo} alt=""/>
             </div>
-            <div className={"justify-around  flex w-full "}>
+            <div  className={"d-flex w-100 align-items-center justify-between h-100  bg-[#405058]"}>
                 <div>
-                    <ul className={"flex gap-4"} style={{
-                        marginLeft: 300
-                    }}>
-                        <li className={"cool-link"}>Supervisor</li>
+                    <ul className={"flex gap-4"}>
+                        <li className={"cool-link "}>Supervisor</li>
                         <li className={"cool-link"}>Sales</li>
                         <li className={"cool-link"}>Cash register</li>
                         <li className={"cool-link"}>GPS</li>
@@ -64,39 +61,12 @@ function Index(props) {
                     </ul>
                 </div>
                 <div>
-
-                </div>
-                <div>
-                    <ul className={"flex gap-2"}>
-                        {/*<li className={"bg-blue-500 rounded w-20"}>12,AUGUST</li>*/}
-                        {/*<li>+9989486668666</li>*/}
-                        {/*{*/}
-                        {dashboard2.map(item => (<div style={{display: "flex", gap: 10,}}>
-
-                            <div>
-
-                                <li style={{
-                                    width: 140,
-                                    height: 30,
-                                    background: "#11bd00",
-                                    paddingLeft: 8,
-                                    paddingTop: 3,
-                                    borderRadius: 56,
-                                    gap: 10,
-                                    cursor: "pointer",
-                                    display: "inline-block",
-                                    fontSize: 15,
-                                    fontWeight: 600,
-                                    outline: 0,
-                                    position: "relative",
-                                    textAlign: "center",
-                                    textDecoration: "none",
-                                    transition: "all 3.s",
-                                    userSelect: "none",
-                                    touchAction: "manipulation",
-                                }}> 🗓️{item.localDate}</li>
+                    <ul className={"flex align-items-center gap-2"}>
+                        {dashboard2.map(item => (<div style={{display: "flex", alignItems:'center', gap: 10,}}>
+                            <div className={"dateStyle"}>
+                                <li> 🗓️{item.localDate}</li>
                             </div>
-                            <li>+{item.phone}</li>
+                            <li style={{fontSize:"30px"}}>+{item.phone}</li>
                         </div>))}
                         <li className={"flex gap-1"}>
                             <img className={"w-16 h-8"} src={bell} alt=""/>
@@ -107,38 +77,59 @@ function Index(props) {
             </div>
         </div>
 
-        <div className={"flex w-[120px] h-[100%] gap-24"}>
+        <div className={"flex w-[120px] h-[100%] gap-24  relative"}>
             <div
-                className="left-div h-full w-[120px] bg-gray-600 p-2  text-white text-center overflow-hidden fixed z-0">
+                className="left-div h-full w-[120px] bg-gray-600 p-2  text-white text-center overflow-hidden fixed z-10">
                 <ul className={"mt-20 w-full h-full flex flex-col items-center"}>
                     <li className={"mt-2 w-6 h-[12%] flex justify-center items-center flex-col"}>
-                        <img src={rocked} alt=""/>
-                        <div>Plans</div>
+                        <div className="img-container">
+                            <img src={rocked} alt=""/>
+                        </div>
+                        <div className={"text-container"}>Plans</div>
+                        <hr className="divider" />
                     </li>
                     <li className={"w-6 h-[12%] flex justify-center items-center flex-col"}>
-                        <img src={basket} alt=""/>
-                        <div>Applications</div>
+                        <div className="img-container">
+                            <img src={basket} alt=""/>
+                        </div>
+                        <div className={"text-container"}>Applications</div>
+                        <hr className="divider" />
                     </li>
                     <li className={"w-6 h-[12%] flex justify-center items-center flex-col"}>
-                        <img src={books} alt=""/>
+                        <div className="img-container">
+                            <img src={books} alt=""/>
+                        </div>
                         <div>Stock</div>
+                        <hr className="divider" />
                     </li>
                     <li className={"w-6 h-[12%] flex justify-center items-center flex-col"}>
-                        <img src={clients} alt=""/>
+                        <div className="img-container">
+                            <img src={clients} alt=""/>
+                        </div>
                         <div>Clients</div>
+                        <hr className="divider" />
                     </li>
                     <li className={"w-6 h-[12%] flex justify-center items-center flex-col"}>
-                        <img src={android} alt=""/>
+                        <div className="img-container">
+                            <img src={android} alt=""/>
+                        </div>
                         <div>Agents</div>
+                        <hr className="divider" />
                     </li>
                     <li className={"w-6 h-[12%] flex justify-center items-center flex-col"}>
-                        <img src={diagram} alt=""/>
+                        <div className="img-container">
+                            <img src={diagram} alt=""/>
+                        </div>
                         <div>Reports</div>
+                        <hr className="divider" />
                     </li>
                     <Link to={"/admin/settings"}
                           className={"w-6 h-[12%] flex justify-center items-center flex-col"}>
-                        <img src={settings} alt=""/>
+                        <div className="img-container">
+                            <img src={settings} alt=""/>
+                        </div>
                         <div>Settings</div>
+                        <hr className="divider" />
                     </Link>
                 </ul>
             </div>

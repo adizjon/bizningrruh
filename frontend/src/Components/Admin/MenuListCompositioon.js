@@ -26,11 +26,14 @@ export default function MenuListComposition() {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
         }
-        localStorage.removeItem("accessToken")
-        localStorage.removeItem("refreshToken")
-        location.reload();
         setOpen(false);
     };
+
+    const logOut = () => {
+        localStorage.removeItem("accessToken")
+        localStorage.removeItem("refreshToken")
+        navigate("/")
+    }
 
     function handleListKeyDown(event) {
         if (event.key === 'Tab') {
@@ -92,9 +95,9 @@ export default function MenuListComposition() {
                                         aria-labelledby="composition-button"
                                         onKeyDown={handleListKeyDown}
                                     >
-                                        <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                        <MenuItem onClick={handleClose}>My account</MenuItem>
-                                        <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                        <MenuItem>Profile</MenuItem>
+                                        <MenuItem>My account</MenuItem>
+                                        <MenuItem onClick={logOut}>Logout</MenuItem>
                                     </MenuList>
                                 </ClickAwayListener>
                             </Paper>

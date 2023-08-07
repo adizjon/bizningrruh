@@ -5,15 +5,22 @@ import 'react-phone-input-2/lib/style.css'
 import {connect} from "react-redux";
 import {loginModel} from "../../Redux/reducers/LoginReducer";
 import {useLocation, useNavigate} from "react-router-dom";
+import axios from "axios";
 function Index(props) {
     const {loginReducer} = props
     const navigate = useNavigate()
     const location = useLocation()
+    const [supportPhone,setSupportPhone]=useState()
     useEffect(() => {
         if (loginReducer.navigateTo !== "" && location.pathname !== loginReducer.navigateTo) {
             navigate(loginReducer.navigateTo)
             console.clear()
         }
+        axios({
+            url: "http://localhost:8080/dashboard", method: "get"
+        }).then(res => {
+            setSupportPhone(res.data.body.phone)
+        })
     })
     return (
         <div className="flex justify-center items-center h-screen bg-gray-100">
@@ -73,7 +80,7 @@ function Index(props) {
                     </div>
                     <div className={"mt-6"}>
                         <hr/>
-                        <h4>Support Service:+998948668666</h4>
+                        <h4>Support Service: {supportPhone}</h4>
                     </div>
                 </form>
             </div>

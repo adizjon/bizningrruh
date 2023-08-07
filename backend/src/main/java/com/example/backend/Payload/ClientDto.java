@@ -1,8 +1,9 @@
-package com.example.backend.Entity;
+package com.example.backend.Payload;
 
-import jakarta.persistence.*;
+import com.example.backend.Entity.CustomerCategory;
+import com.example.backend.Entity.Territory;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,13 +12,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "clients")
-@Entity
-@Builder
-public class Client {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+public class ClientDto {
     private String name;
     private String address;
     private String phone;
@@ -25,8 +20,6 @@ public class Client {
     private String companyName;
     private String longitude;
     private String lat;
-    @OneToOne
-    private CustomerCategory customerCategory;
-    @OneToOne
-    private Territory territory;
+    private Integer customerCategoryId;
+    private UUID territoryId;
 }

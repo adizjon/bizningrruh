@@ -26,7 +26,7 @@ function SettingPanel(props) {
         <div className={"biggestDiv w-52 py-7 px-10 bg-white"}>
             <div className={"panel"}>
                 <nav>
-                    <ul>
+                    <ul style={{ position: "relative", zIndex: 1 }}>
                         <div className={"text-center settingDiv bg-amber-500 w-52 h-9"}><h2 className={"p-2 text-white"}>SETTINGS</h2></div>
                         {settings.map((item, index) => <button onClick={() => nextPage(item.navigation)} key={index}
                                                            className={"text-center button "}><p >{item.settingCategory}</p></button>)}

@@ -40,7 +40,7 @@ const slice = createSlice({
                 localStorage.setItem("accessToken", data)
                 localStorage.removeItem("refreshToken")
             }
-            if(localStorage.getItem("accessToken")!=="BAD_CREDENTIALS"){
+            if (localStorage.getItem("accessToken") !== "BAD_CREDENTIALS") {
                 state.navigateTo = "/admin"
             }
         }
