@@ -73,7 +73,46 @@
         padding: 16px 48px;
     }
 }
-/*.button-71 p{*/
-/*    position: absolute;*/
-/*    top: 22px;*/
+.dateStyle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background-color: #0A819C;
+}
+.dateStyle li {
+    list-style-type: none; /* Remove default list bullet */
+    /* Add any other styles you want for the li element here */
+}
+.giveZIndex{
+    z-index: 99;
+}
+.divider {
+    width: 120px;
+    height: 1px;
+    background-color: #eee7e7; /* Change to desired line color */
+    border: none; /* Remove default border style */
+}
+
+/* Other styles for the div, img, and text if needed */
+.mt-2 {
+    margin-top: 0.5rem;
+}
+.img-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.img-container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+/*.text-container {*/
+/*   text-align: center;*/
+/*    margin-top: 5px;*/
+/*    !* Add any other styles you want for the text container *!*/
 /*}*/
+
