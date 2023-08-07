@@ -1,7 +1,8 @@
 package com.example.backend.Service.CustomerCategory;
 
 import com.example.backend.Entity.CustomerCategory;
-import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 public interface CustomerCategoryServices {
 
@@ -10,4 +11,6 @@ public interface CustomerCategoryServices {
     void addCustomerCategory(CustomerCategory customerCategory);
 
     void putCustomerCategory(Integer id, CustomerCategory customerCategory);
+
+    List<CustomerCategory> getInType(Boolean type);
 }

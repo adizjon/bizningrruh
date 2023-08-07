@@ -26,7 +26,7 @@ public class TerritoryController {
     }
 
     @GetMapping("/excel")
-    @PreAuthorize("hasAnyRole('SUPERVISOR')")
+    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
     public ResponseEntity<byte[]> downloadTerritoriesAsExcel(
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "5") Integer size,

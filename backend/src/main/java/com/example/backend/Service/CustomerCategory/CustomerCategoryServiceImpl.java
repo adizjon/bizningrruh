@@ -5,6 +5,8 @@ import com.example.backend.Repository.CustomerCategoryRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerCategoryServiceImpl implements CustomerCategoryServices {
@@ -30,5 +32,11 @@ public class CustomerCategoryServiceImpl implements CustomerCategoryServices {
                 customerCategory.isActive()
         );
         customerCategoryRepo.save(customerCategory1);
+    }
+
+    @Override
+    public List<CustomerCategory> getInType(Boolean type) {
+        List<CustomerCategory> byActive = customerCategoryRepo.findALlByActive(type);
+        return byActive;
     }
 }
