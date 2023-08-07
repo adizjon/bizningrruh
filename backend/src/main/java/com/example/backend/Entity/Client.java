@@ -29,6 +29,7 @@ public class Client {
 
     private String companyName;
 
+<<<<<<< HEAD
     private String longitude;
     private String lat;
     @OneToOne
@@ -37,3 +38,16 @@ public class Client {
     private Territory territory;
 }
 
+=======
+
+    private String longitude;
+
+    private String latitude;
+
+    @ManyToOne
+    private CustomerCategory customerCategory;
+
+    @ManyToOne
+    private Territory territory;
+}
+>>>>>>> c28cae6e698907ba48d94fb348be878f6f2e8f7f

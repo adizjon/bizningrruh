@@ -183,6 +183,10 @@ function Index(props) {
                     <div className={"mt-6"}>
                         <hr/>
                         <h4>Support Service: {supportPhone}</h4>
+
+                        {
+                            dashboard.map(item=><h4>Support Service:+{item.phone}</h4>)
+                        }
                     </div>
                 </form>
             </div>

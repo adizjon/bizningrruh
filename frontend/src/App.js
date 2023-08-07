@@ -12,6 +12,7 @@ import Table from "./Components/Table/Table";
 import Test from "./test";
 import MenuListComposition from "./Components/Admin/MenuListCompositioon";
 import Client from "./Components/Client/Client";
+import CustomerCategory from "./Components/CustomerCategory/CustomerCategory";
 
 function App() {
     const [data, setData] = useState([]);
@@ -97,7 +98,8 @@ function App() {
         getRefreshToken()
 
     }, [location.pathname])
-    function getRefreshToken(){
+
+    function getRefreshToken() {
         axios({
             url: "http://localhost:8080/api/auth/getMe?accessToken=" + localStorage.getItem("accessToken"),
             method: "get"
@@ -155,6 +157,9 @@ function App() {
                 <Route path={"/admin/settings"} element={<SettingPanel/>}>
                     <Route path={"/admin/settings/territory"} element={<Territory/>}/>
                     <Route path={"/admin/settings/clientType"} element={<Client/>}/>
+
+                    <Route path={"/admin/settings/customerCategory"} element={<CustomerCategory/>}/>
+
                 </Route>
             </Route>
             <Route path={"*"} element={<NotFound404/>}/>
@@ -166,6 +171,7 @@ function App() {
                     columns1={columns}
                     api={"https://jsonplaceholder.typicode.com/users"}/>}
             />
+
             <Route path={"/table2"} element={<Table
                 dataProps={data}
                 columnsProps={columns2}
