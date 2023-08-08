@@ -9,6 +9,7 @@ import java.util.UUID;
 
 public interface ClientRepo extends JpaRepository<Client, UUID> {
 //    findAllByTitleContainsIgnoreCaseOrRegionContainsIgnoreCase
+List<Client> findAllByActiveAndNameContainsIgnoreCaseOrAddressContainsIgnoreCaseOrPhoneContainsIgnoreCaseOrTinContainsIgnoreCaseOrCompanyNameContainsIgnoreCase(Boolean active,String quickSearchValue, String quickSearchValue1, String quickSearchValue2, String quickSearchValue3, String quickSearchValue4, Pageable pageable);
 
 
     List<Client> findAllByNameContainsIgnoreCaseOrAddressContainsIgnoreCaseOrPhoneContainsIgnoreCaseOrTinContainsIgnoreCaseOrCompanyNameContainsIgnoreCase(String quickSearchValue, String quickSearchValue1, String quickSearchValue2, String quickSearchValue3, String quickSearchValue4, Pageable pageable);

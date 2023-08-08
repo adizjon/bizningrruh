@@ -16,8 +16,8 @@ import java.util.UUID;
 public class ClientController {
     private final ClientService clientService;
     @GetMapping
-    public HttpEntity<?> getClients(@RequestParam(required = false,defaultValue = "false") Boolean active,@RequestParam(required = false) String quickSearchValue,@RequestParam(required = false,defaultValue = "") Integer page,@RequestParam(required = false,defaultValue = "") Integer size){
-        return clientService.getClients(active,quickSearchValue,page,size);
+    public HttpEntity<?> getClients(@RequestParam(required = false,defaultValue = "false") Boolean active,@RequestParam(required = false) String quickSearchValue,@RequestParam(required = false,defaultValue = "") Integer page,@RequestParam(required = false,defaultValue = "") Integer size,@RequestParam(required = false) Integer customerCategory){
+        return clientService.getClients(active,quickSearchValue,page,size,customerCategory);
     }
     @PostMapping
     public HttpEntity<?> postClient(@RequestBody ClientDto clientDto){

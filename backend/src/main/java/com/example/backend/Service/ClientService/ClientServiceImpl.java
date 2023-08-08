@@ -41,7 +41,7 @@ public class ClientServiceImpl implements ClientService{
     public HttpEntity<?> postCliet(ClientDto clientDto) {
         CustomerCategory customerCategory = customerCategoryRepo.findById(clientDto.getCustomerCategoryId()).get();
         Territory territory = territoryRepo.findById(clientDto.getTerritoryId()).get();
-        Client reqClient=new Client(UUID.randomUUID(), clientDto.getName(), clientDto.getAddress(), clientDto.getPhone(), clientDto.getTin(), clientDto.getCompanyName(), clientDto.getLongitude(), clientDto.getLat(), customerCategory,territory);
+        Client reqClient=new Client(UUID.randomUUID(), clientDto.getName(), clientDto.getAddress(), clientDto.getPhone(), clientDto.getTin(), clientDto.getCompanyName(), clientDto.getLongitude(), clientDto.getLat(), clientDto.getActive(),customerCategory,territory);
         Client newClient = clientRepo.save(reqClient);
         return ResponseEntity.ok(newClient);
     }
@@ -60,22 +60,24 @@ public class ClientServiceImpl implements ClientService{
         editingClient.setTin(clientDto.getTin());
         editingClient.setCompanyName(clientDto.getCompanyName());
         editingClient.setLongitude(clientDto.getLongitude());
-        editingClient.setLatitude(clientDto.getLat());
+        editingClient.setLat(clientDto.getLat());
         editingClient.setCustomerCategory(customerCategoryRepo.findById(clientDto.getCustomerCategoryId()).get());
         editingClient.setTerritory(territoryRepo.findById(clientDto.getTerritoryId()).get());
+        editingClient.setActive(clientDto.getActive());
         return ResponseEntity.ok(editingClient);
 
     }
 
     @Override
-    public HttpEntity<?> getClients(Boolean active, String quickSearchValue,Integer page, Integer size) {
+    public HttpEntity<?> getClients(Boolean active, String quickSearchValue,Integer page, Integer size,Integer customerCategory) {
         Pageable pageable = PageRequest.of(page - 1, size);
-        if (active){
+        if (active==null){
             return ResponseEntity.ok(clientRepo.findAllByNameContainsIgnoreCaseOrAddressContainsIgnoreCaseOrPhoneContainsIgnoreCaseOrTinContainsIgnoreCaseOrCompanyNameContainsIgnoreCase(
-                    quickSearchValue, quickSearchValue, quickSearchValue, quickSearchValue, quickSearchValue, pageable));
+                    quickSearchValue, quickSearchValue, quickSearchValue, quickSearchValue, quickSearchValue, pageable
+            ));
         }else {
-            return ResponseEntity.ok(clientRepo.findAll(pageable));
+            return ResponseEntity.ok(clientRepo.findAllByActiveAndNameContainsIgnoreCaseOrAddressContainsIgnoreCaseOrPhoneContainsIgnoreCaseOrTinContainsIgnoreCaseOrCompanyNameContainsIgnoreCase(
+                   active,quickSearchValue, quickSearchValue, quickSearchValue, quickSearchValue, quickSearchValue, pageable));
         }
     }
-
 }

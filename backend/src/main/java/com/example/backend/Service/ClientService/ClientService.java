@@ -15,5 +15,5 @@ public interface ClientService {
     HttpEntity<?> putClient(ClientDto clientDto, UUID id);
 
 
-    HttpEntity<?> getClients(Boolean active, String quickSearchValue,Integer page,Integer size);
+    HttpEntity<?> getClients(Boolean active, String quickSearchValue,Integer page,Integer size,Integer customerCategory);
 }
