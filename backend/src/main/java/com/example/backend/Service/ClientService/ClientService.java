@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface ClientService {
 
-    HttpEntity<?> postCliet(ClientDto clientDto);
+    HttpEntity<?> postClient(ClientDto clientDto);
 
     void deleteClient(UUID id);
 

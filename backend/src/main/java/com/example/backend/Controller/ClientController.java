@@ -21,7 +21,7 @@ public class ClientController {
     }
     @PostMapping
     public HttpEntity<?> postClient(@RequestBody ClientDto clientDto){
-        return clientService.postCliet(clientDto);
+        return clientService.postClient(clientDto);
     }
     @DeleteMapping("/{id}")
     public void deleteClient(@PathVariable UUID id){
