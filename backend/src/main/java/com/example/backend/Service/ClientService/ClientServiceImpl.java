@@ -26,15 +26,6 @@ public class ClientServiceImpl implements ClientService{
     private final ClientRepo clientRepo;
     private final CustomerCategoryRepo customerCategoryRepo;
     private final TerritoryRepo territoryRepo;
-//    @Override
-//    public HttpEntity<?> getClients(SearchDto searchDto) {
-//
-//       if (searchDto.getActive()){
-//           return ResponseEntity.ok(clientRepo.findAllByNameContainsIgnoreCaseOrAddressContainsIgnoreCaseOrPhoneContainsIgnoreCaseOrTinContainsIgnoreCaseOrCompanyNameContainsIgnoreCase(searchDto.getQuickSearchValue(),searchDto.getQuickSearchValue(),searchDto.getQuickSearchValue(),searchDto.getQuickSearchValue(),searchDto.getQuickSearchValue()));
-//       }else {
-//           return ResponseEntity.ok(clientRepo.findAll());
-//       }
-//    }
 
 
     @Override
