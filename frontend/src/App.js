@@ -13,6 +13,10 @@ import Test from "./test";
 import MenuListComposition from "./Components/Admin/MenuListCompositioon";
 import Client from "./Components/Client/Client";
 import CustomerCategory from "./Components/CustomerCategory/CustomerCategory";
+import Helo from "./Components/UniversalFilter/Hello";
+import UniversalFilter from "./Components/UniversalFilter/UniversalFilter";
+import Hello from "./Components/UniversalFilter/Hello";
+import B from "./Components/UniversalFilter/B";
 
 function App() {
     const [data, setData] = useState([]);
@@ -40,14 +44,6 @@ function App() {
             show: true,
         },
     ];
-
-    useEffect(() => {
-        axios
-            .get("https://jsonplaceholder.typicode.com/comments")
-            .then(({data}) => {
-                setData(data);
-            });
-    }, []);
 
 
     const [testData, setTestData] = useState([])
@@ -94,7 +90,6 @@ function App() {
     }
 
     useEffect(() => {
-        getTestData()
         getRefreshToken()
 
     }, [location.pathname])
@@ -139,20 +134,12 @@ function App() {
         })
     }
 
-    function getTestData() {
-        axios({
-            url: "https://jsonplaceholder.typicode.com/users",
-            method: "get"
-        }).then(res => {
-            setTestData(res.data)
-        })
-    }
-
 
     return (
         <Routes>
             <Route path={"/"} element={<Login/>}/>
-            <Route path={"/aa"} element={<MenuListComposition/>}/>
+            <Route path={"/filter"} element={<Hello/>}/>
+            <Route path={"/b"} element={<B/>}/>
             <Route path={"/admin"} element={<Admin/>}>
                 <Route path={"/admin/settings"} element={<SettingPanel/>}>
                     <Route path={"/admin/settings/territory"} element={<Territory/>}/>

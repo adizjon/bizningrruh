@@ -205,7 +205,7 @@ function Index(props) {
         <div style={{maxWidth:"120%",maxHeight:"100%",overflow:"scroll"}}>
 
 
-            <UniversalModal width={100} height={400} visible={isVisible} inputs={inputs} yandexMap={YMap}
+            <UniversalModal width={700} height={400} visible={isVisible} inputs={inputs} yandexMap={YMap}
                             setVisible={() => handleVisible(false)} buttons={buttons}/>
 
             {/*<UniversalTable data={testData} columns1={columns}*/}

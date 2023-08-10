@@ -7,38 +7,40 @@ import com.example.backend.Payload.ClientDto;
 import com.example.backend.Repository.ClientRepo;
 import com.example.backend.Repository.CustomerCategoryRepo;
 import com.example.backend.Repository.TerritoryRepo;
-import jakarta.persistence.OneToOne;
+import com.example.backend.projection.ClientProjection;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class ClientServiceImpl implements ClientService{
+public class ClientServiceImpl implements ClientService {
     private final ClientRepo clientRepo;
     private final CustomerCategoryRepo customerCategoryRepo;
     private final TerritoryRepo territoryRepo;
+
     @Override
-    public HttpEntity<?> getClients() {
-        return ResponseEntity.ok(clientRepo.findAll());
+    public HttpEntity<?> getClients(List<UUID> city, List<UUID> customerCategory, Boolean active, Boolean tin, String search) {
+        List<ClientProjection> allByFilter = clientRepo.findAllByFilter(city, customerCategory, active, tin, search);
+        return ResponseEntity.ok(allByFilter);
     }
 
     @Override
     public HttpEntity<?> postCliet(ClientDto clientDto) {
         CustomerCategory customerCategory = customerCategoryRepo.findById(clientDto.getCustomerCategoryId()).get();
         Territory territory = territoryRepo.findById(clientDto.getTerritoryId()).get();
-        Client reqClient=new Client(UUID.randomUUID(), clientDto.getName(), clientDto.getAddress(), clientDto.getPhone(), clientDto.getTin(), clientDto.getCompanyName(), clientDto.getLongitude(), clientDto.getLat(), customerCategory,territory);
+        Client reqClient = new Client(UUID.randomUUID(), clientDto.getName(), clientDto.getAddress(), clientDto.getPhone(), clientDto.getTin(), clientDto.getCompanyName(), clientDto.getLongitude(), clientDto.getLat(), clientDto.getActive(), customerCategory, territory);
         Client newClient = clientRepo.save(reqClient);
         return ResponseEntity.ok(newClient);
     }
 
     @Override
     public void deleteClient(UUID id) {
-            clientRepo.deleteById(id);
+        clientRepo.deleteById(id);
     }
 
     @Override
@@ -54,6 +56,5 @@ public class ClientServiceImpl implements ClientService{
         editingClient.setCustomerCategory(customerCategoryRepo.findById(clientDto.getCustomerCategoryId()).get());
         editingClient.setTerritory(territoryRepo.findById(clientDto.getTerritoryId()).get());
         return ResponseEntity.ok(editingClient);
-
     }
 }

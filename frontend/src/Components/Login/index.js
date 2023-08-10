@@ -114,7 +114,6 @@ function Index(props) {
     useEffect(() => {
         if (loginReducer.navigateTo !== "" && location.pathname !== loginReducer.navigateTo) {
             navigate(loginReducer.navigateTo)
-            console.clear()
         }
         axios({
             url: "http://localhost:8080/dashboard", method: "get"
@@ -190,6 +189,5 @@ function Index(props) {
         </div>
     );
 };
-console.clear()
 
 export default connect(state => state, {...loginModel})(Index);

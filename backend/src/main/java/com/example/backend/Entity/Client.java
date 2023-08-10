@@ -34,6 +34,8 @@ public class Client {
 
     private String latitude;
 
+    private Boolean active;
+
     @ManyToOne
     private CustomerCategory customerCategory;
 

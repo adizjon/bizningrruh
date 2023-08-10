@@ -66,7 +66,7 @@ function CustomerCategory(props) {
         })
     }
 
-    function getInActive(type ) {
+    function getInActive(type) {
         axios({
             url: "http://localhost:8080/customerCategory/getInActive/" + type,
             method: "get"
@@ -75,11 +75,17 @@ function CustomerCategory(props) {
         })
     }
 
+    function getAllCode() {
+
+        getCustomerCategory()
+    }
+
     return (<div>
         <button onClick={() => setRodal(true)} className={"btn btn-success mx-3 my-3"}>+Add Client Category</button>
         <div className="d-flex gap-1 mx-4 my-3">
             <button onClick={() => getInActive("true")} className="btn btn-outline-dark ">active</button>
             <button onClick={() => getInActive("false")} className="btn btn-outline-dark ">in active</button>
+            <button onClick={() => getAllCode()} className="btn btn-outline-dark ">all</button>
         </div>
         <Rodal height={500} visible={rodal} onClose={() => closedModal()}>
             <form onSubmit={handleSubmit(mySubmit)}>
@@ -94,8 +100,8 @@ function CustomerCategory(props) {
                         <p>active:</p><input {...register("active")} type="checkbox"/>
                     </div>
                 </div>
-                {button ? <button className="btn btn-outline-dark my-3">edit</button> :
-                    <button className="btn btn-outline-dark my-3">add</button>}
+
+                <button className="btn btn-outline-dark my-3">add</button>
 
             </form>
         </Rodal>
