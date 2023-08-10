@@ -29,13 +29,16 @@ public class Client {
 
     private String companyName;
 
+
     private String longitude;
-    private String lat;
+
+    private String latitude;
+
     private Boolean active;
-    @OneToOne
+
+    @ManyToOne
     private CustomerCategory customerCategory;
-    @OneToOne
+
+    @ManyToOne
     private Territory territory;
 }
-
-

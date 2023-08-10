@@ -118,8 +118,7 @@ export default function MenuListComposition() {
                                     >
                                         <MenuItem>Profile</MenuItem>
                                         <MenuItem>My account</MenuItem>
-                                        <MenuItem onClick={logOut}>Logout</MenuItem>
-                                        <MenuItem id="logout-menu-item" onClick={logOut}>Logout</MenuItem>
+                                            <MenuItem id="logout-menu-item" onClick={logOut}>Logout</MenuItem>
                                     </MenuList>
                                 </ClickAwayListener>
                             </Paper>
