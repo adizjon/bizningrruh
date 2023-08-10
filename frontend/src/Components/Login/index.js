@@ -111,6 +111,7 @@ function Index(props) {
     const [supportPhone,setSupportPhone]=useState()
     const [dashboard, setDashboard] = useState([])
 
+
     useEffect(() => {
         if (loginReducer.navigateTo !== "" && location.pathname !== loginReducer.navigateTo) {
             navigate(loginReducer.navigateTo)
@@ -119,7 +120,6 @@ function Index(props) {
             url: "http://localhost:8080/dashboard", method: "get"
         }).then(res => {
             setSupportPhone(res.data.body.phone)
-            setDashboard([res.data.body])
         })
     })
     return (
@@ -180,6 +180,9 @@ function Index(props) {
                         </button>
                     </div>
                     <div className={"mt-6"}>
+                        <hr/>
+                        <h4>Support Service: {supportPhone}</h4>
+
                         {
                             dashboard.map(item=><h4>Support Service:+{item.phone}</h4>)
                         }

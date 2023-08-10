@@ -39,6 +39,7 @@ export default function MenuListComposition() {
             return;
         }
 
+
         // Check if the clicked element is the "Logout" MenuItem
         const logoutMenuItem = document.getElementById('logout-menu-item');
         if (logoutMenuItem && logoutMenuItem.contains(event.target)) {
@@ -70,10 +71,10 @@ export default function MenuListComposition() {
         prevOpen.current = open;
     }, [open]);
 
-    function logOut() {
+     function logOut() {
         localStorage.clear();
         navigate('/');
-    }
+     }
 
     return (
         <Stack direction="row" spacing={2}>

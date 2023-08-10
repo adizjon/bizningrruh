@@ -23,4 +23,5 @@ public class ClientDto {
     private String lat;
     private Integer customerCategoryId;
     private UUID territoryId;
+    private Boolean active;
 }

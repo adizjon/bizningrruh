@@ -144,6 +144,7 @@ function App() {
                 <Route path={"/admin/settings"} element={<SettingPanel/>}>
                     <Route path={"/admin/settings/territory"} element={<Territory/>}/>
                     <Route path={"/admin/settings/clientType"} element={<Client/>}/>
+
                     <Route path={"/admin/settings/customerCategory"} element={<CustomerCategory/>}/>
 
                 </Route>
