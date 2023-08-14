@@ -13,10 +13,8 @@ import Test from "./test";
 import MenuListComposition from "./Components/Admin/MenuListCompositioon";
 import Client from "./Components/Client/Client";
 import CustomerCategory from "./Components/CustomerCategory/CustomerCategory";
-import Helo from "./Components/UniversalFilter/Hello";
-import UniversalFilter from "./Components/UniversalFilter/UniversalFilter";
-import Hello from "./Components/UniversalFilter/Hello";
 import B from "./Components/UniversalFilter/B";
+import Hello from "./Components/UniversalFilter/Hello";
 
 function App() {
     const [data, setData] = useState([]);
@@ -140,10 +138,11 @@ function App() {
             <Route path={"/"} element={<Login/>}/>
             <Route path={"/filter"} element={<Hello/>}/>
             <Route path={"/b"} element={<B/>}/>
+
             <Route path={"/admin"} element={<Admin/>}>
+                <Route path={"/admin/client"} element={<Client/>}/>
                 <Route path={"/admin/settings"} element={<SettingPanel/>}>
                     <Route path={"/admin/settings/territory"} element={<Territory/>}/>
-                    <Route path={"/admin/settings/clientType"} element={<Client/>}/>
 
                     <Route path={"/admin/settings/customerCategory"} element={<CustomerCategory/>}/>
 

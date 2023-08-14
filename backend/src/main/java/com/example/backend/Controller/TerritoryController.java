@@ -40,10 +40,11 @@ public class TerritoryController {
     @PreAuthorize("hasRole('ROLE_SUPER_ADMIN')")
     public HttpEntity<?> getTerritories(
             @RequestParam(defaultValue = "0") Integer page,
-            @RequestParam(defaultValue = "5") Integer size,
+        @RequestParam(defaultValue = "5") Integer size,
             @RequestParam(defaultValue = "") Boolean active,
             @RequestParam(defaultValue = "") String search
     ) throws IOException {
+        System.out.println("salom");
         return territoryService.getTerritories(page, size, active, search);
     }
 

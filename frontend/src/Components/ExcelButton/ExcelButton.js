@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import ApiCall from "../Components/Api/apiCall";
 
-const App = (props) => {
+const ExcelButton = (props) => {
     const [users, setUsers] = useState([{
         title: "12",
         region: "q",
@@ -34,9 +33,8 @@ const App = (props) => {
     };
 
     return (
-        <button className="btn btn-outline-primary" onClick={handleDownload}>excel</button>
+        <button className="btn btn-light" onClick={handleDownload}>excel</button>
     );
 };
 
-export default App;
-
+export default ExcelButton;

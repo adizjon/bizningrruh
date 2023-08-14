@@ -11,7 +11,6 @@ const slice = createSlice({
         },
         getDashboardDataSuccess: (state, action) => {
             state.dashboardData = action.payload
-            console.log(action.payload)
         },
         getDashboardDataFailure: (state, action) => {
             state.error = action.payload

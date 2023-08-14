@@ -20,7 +20,6 @@
 // export const settingModel=slice.actions
 // // function getSettings(){
 //     //     apiCall({url:"/api/setting",method:"GET"}).then(({data})=>{
-//     //         console.log(data)
 //     //         setSettings(data)
 //     //     })
 //     // }

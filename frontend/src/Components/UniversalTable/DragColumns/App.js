@@ -22,7 +22,6 @@ function App() {
 
 
   const [stores, setStores] = useState(DATA);
-  console.log(stores)
 
   const handleDragAndDrop = (results) => {
     const { source, destination, type } = results;
