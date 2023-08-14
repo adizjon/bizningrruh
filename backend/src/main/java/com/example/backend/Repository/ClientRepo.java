@@ -29,7 +29,7 @@ public interface ClientRepo extends JpaRepository<Client, UUID> {
                 and (
                     :search is null
                             or LOWER(cl.name) like CONCAT(LOWER(:search), '%')
-                            or LOWER(cl.address) like CONCAT(LOWER(:search), '%')
+                            or LOWER(cl.address) like CONCAT(LOWER(:search), '%')t
                             or LOWER(cl.phone) like CONCAT(LOWER(:search), '%')
                             or LOWER(cl.tin) like CONCAT(LOWER(:search), '%')
                             or LOWER(t.title) like CONCAT(LOWER(:search), '%')

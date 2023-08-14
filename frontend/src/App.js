@@ -17,6 +17,7 @@ import Helo from "./Components/UniversalFilter/Hello";
 import UniversalFilter from "./Components/UniversalFilter/UniversalFilter";
 import Hello from "./Components/UniversalFilter/Hello";
 import B from "./Components/UniversalFilter/B";
+import ClientMap from "./Components/ClientMap/clientMap";
 
 function App() {
     const [data, setData] = useState([]);
@@ -139,6 +140,7 @@ function App() {
         <Routes>
             <Route path={"/"} element={<Login/>}/>
             <Route path={"/filter"} element={<Hello/>}/>
+            <Route path={"/map"} element={<ClientMap/>}/>
             <Route path={"/b"} element={<B/>}/>
             <Route path={"/admin"} element={<Admin/>}>
                 <Route path={"/admin/settings"} element={<SettingPanel/>}>
