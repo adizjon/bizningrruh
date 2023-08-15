@@ -7,7 +7,7 @@
 // import {useLocation, useNavigate} from "react-router-dom";
 // import axios from "axios";
 //
-// function Index(props) {
+// function ClientMap(props) {
 //     const {loginReducer} = props
 //     const navigate = useNavigate()
 //     const location = useLocation()
@@ -93,7 +93,7 @@
 // };
 // console.clear()
 //
-// export default connect(state => state, {...loginModel})(Index);
+// export default connect(state => state, {...loginModel})(ClientMap);
 
 
 import React, {useEffect, useState} from 'react';

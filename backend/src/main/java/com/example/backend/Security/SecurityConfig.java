@@ -36,6 +36,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/auth/login").permitAll()
                                 .requestMatchers("/api/auth/refresh").permitAll()
                                 .requestMatchers("/api/auth/getMe").permitAll()
+                                .requestMatchers("/api/territory/get").permitAll()
 
                                 .requestMatchers("/api/setting").permitAll()
 
