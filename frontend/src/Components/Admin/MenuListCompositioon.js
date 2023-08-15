@@ -67,7 +67,6 @@ export default function MenuListComposition() {
         if (prevOpen.current === true && open === false) {
             anchorRef.current.focus();
         }
-
         prevOpen.current = open;
     }, [open]);
 
@@ -118,8 +117,7 @@ export default function MenuListComposition() {
                                     >
                                         <MenuItem>Profile</MenuItem>
                                         <MenuItem>My account</MenuItem>
-                                        <MenuItem onClick={logOut}>Logout</MenuItem>
-                                        <MenuItem id="logout-menu-item" onClick={logOut}>Logout</MenuItem>
+                                            <MenuItem id="logout-menu-item" onClick={logOut}>Logout</MenuItem>
                                     </MenuList>
                                 </ClickAwayListener>
                             </Paper>
