@@ -1,5 +1,7 @@
 package com.example.backend.Controller;
 
+import com.example.backend.Service.TgBotService.TgBotService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,27 +13,17 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 
 @RestController
 @RequestMapping("/api/TgBot")
+@RequiredArgsConstructor
 public class TGBotController {
 
+    private final TgBotService tgBotService;
+
     @PostMapping
-    public ResponseEntity<String> onUpdateReceived(@RequestBody Update update) {
+    public void onUpdateReceived(@RequestBody Update update) {
         try {
-            if (update.hasMessage()) {
-                Message message = update.getMessage();
-                String text = message.getText();
-                System.out.println("Received message: " + text);
-
-                // Burada gelen mesaja yanıt verebilir veya diğer işlemleri yapabilirsiniz.
-                // Örnek olarak gelen mesaja bir yanıt göndermek için TelegramBotService gibi bir hizmet kullanabilirsiniz.
-
-                return new ResponseEntity<>("Message received successfully", HttpStatus.OK);
-            } else {
-                System.out.println("Received an update without a message.");
-                return new ResponseEntity<>("No message in the update", HttpStatus.BAD_REQUEST);
-            }
+            tgBotService.onUpdateReceived(update);
         } catch (Exception e) {
-            System.err.println("An error occurred: " + e.getMessage());
-            return new ResponseEntity<>("An error occurred", HttpStatus.INTERNAL_SERVER_ERROR);
+            System.out.println("ERROR!");
         }
     }
 }
