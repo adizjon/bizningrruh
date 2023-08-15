@@ -42,7 +42,7 @@ public class TerritoryServiceImpl implements TerritoryService {
 
     @Override
     public ResponseEntity<byte[]> downloadTerritoryAsExcel(Integer page, Integer size, Boolean active, String search) throws IOException {
-        Pageable pageable = PageRequest.of(page - 1, size);
+        Pageable pageable = PageRequest.of(page == 0 ? page : page - 1, size);
 
         Page<Territory> territories;
         if (active == null) {
@@ -78,7 +78,7 @@ public class TerritoryServiceImpl implements TerritoryService {
 
     @Override
     public HttpEntity<?> getTerritories(Integer page, Integer size, Boolean active, String search) {
-        Pageable pageable = PageRequest.of(page - 1, size);
+        Pageable pageable = PageRequest.of(page == 0 ? page : page - 1, size);
         if (active == null) {
             Page<Territory> all = territoryRepo.findAllByTitleContainsIgnoreCaseOrRegionContainsIgnoreCase(search, search, pageable);
             return ResponseEntity.ok(all);

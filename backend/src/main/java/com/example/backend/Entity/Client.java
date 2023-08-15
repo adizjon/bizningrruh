@@ -29,7 +29,6 @@ public class Client {
 
     private String companyName;
 
-
     private String longitude;
 
     private String latitude;
@@ -42,3 +41,5 @@ public class Client {
     @ManyToOne
     private Territory territory;
 }
+
+

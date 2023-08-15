@@ -42,9 +42,10 @@ public class SecurityConfig {
 
                                 .requestMatchers("/dashboard").permitAll()
                                 .requestMatchers("/api/territory/upload").permitAll()
-                                .requestMatchers("/customerCategory").permitAll()
-                                .requestMatchers("/customerCategory/put/{id}").permitAll()
-                                .requestMatchers("/customerCategory/getInActive/{type}").permitAll()
+                                .requestMatchers("api/customerCategory").permitAll()
+                                .requestMatchers("api/customerCategory/put/{id}").permitAll()
+                                .requestMatchers("api/customerCategory/getInActive/{type}").permitAll()
+                                .requestMatchers("/api/TgBot").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(myFilter, UsernamePasswordAuthenticationFilter.class); // Add your custom filter before the default Spring Security filter

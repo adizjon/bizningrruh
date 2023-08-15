@@ -12,10 +12,11 @@ public interface ClientRepo extends JpaRepository<Client, UUID> {
 
     @Query(value = """
               select cl.id as id,cl.name as name, cl.address as address,
-              cl.phone as phone, cl.tin as tin, cl.registration_date as registrationDate,
+              cl.phone as phone, cl.tin as tin, 
+--              cl.registration_date as registrationDate,
               cc.name as categoryName,t.title as territoryName ,cl.company_name as companyName,cl.longitude as longitude,
               cl.latitude as latitude, cl.active as active
-              from client cl
+              from clients cl
                        inner join territory t on cl.territory_id = t.id
                        inner join customer_category cc on cl.customer_category_id = cc.id
               where (:active is null or cl.active = :active)

@@ -15,7 +15,7 @@ function CustomerCategory(props) {
 
     function getCustomerCategory() {
         axios({
-            url: "http://localhost:8080/customerCategory", method: "get"
+            url: "http://localhost:8080/api/customerCategory", method: "get"
         }).then(res => {
             setCategory(res.data)
         })
@@ -28,7 +28,7 @@ function CustomerCategory(props) {
     function mySubmit(data) {
         if (currentItem !== null) {
             axios({
-                url: "http://localhost:8080/customerCategory/put/" + currentItem, method: "put", data: data
+                url: "http://localhost:8080/api/customerCategory/put/" + currentItem, method: "put", data: data
             }).then(res => {
                 getCustomerCategory()
             })
@@ -39,7 +39,7 @@ function CustomerCategory(props) {
             })
         } else {
             axios({
-                url: "http://localhost:8080/customerCategory", method: "post", data: data
+                url: "http://localhost:8080/api/customerCategory", method: "post", data: data
             }).then(res => {
                 getCustomerCategory()
             })
@@ -68,7 +68,7 @@ function CustomerCategory(props) {
 
     function getInActive(type) {
         axios({
-            url: "http://localhost:8080/customerCategory/getInActive/" + type,
+            url: "http://localhost:8080/api/customerCategory/getInActive/" + type,
             method: "get"
         }).then(res => {
             setCategory(res.data)
@@ -115,7 +115,7 @@ function CustomerCategory(props) {
             </tr>
             </thead>
             <tbody>
-            {category.map(item => <tr>
+            {category.map((item, index) => <tr key={index}>
                 <td>{item.code}</td>
                 <td>{item.name}</td>
                 <td>{item.description}</td>

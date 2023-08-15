@@ -184,7 +184,7 @@ function Index(props) {
                         <h4>Support Service: {supportPhone}</h4>
 
                         {
-                            dashboard.map(item=><h4>Support Service:+{item.phone}</h4>)
+                            dashboard.map((item, index)=><h4 key={index}>Support Service:+{item.phone}</h4>)
                         }
                     </div>
                 </form>

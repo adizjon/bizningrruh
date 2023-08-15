@@ -8,7 +8,6 @@ function* watchGetDashboardData() {
             url: "/dashboard",
             method: "GET"
         })
-        console.log(data)
         yield put(dashboardModel.getDashboardDataSuccess({...data.body}))
     } catch (e) {
         yield put(dashboardModel.getDashboardDataFailure(e.data))
