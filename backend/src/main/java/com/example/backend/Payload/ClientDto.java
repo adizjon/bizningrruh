@@ -20,7 +20,7 @@ public class ClientDto {
     private String companyName;
     private String longitude;
     private Boolean active;
-    private String lat;
+    private String latitude;
     private Integer customerCategoryId;
     private UUID territoryId;
 }

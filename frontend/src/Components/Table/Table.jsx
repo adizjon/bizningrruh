@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
 import { useLocation } from "react-router-dom";
 import "./Table.css";
+import ExcelButton from "../ExcelButton/ExcelButton";
 const Table = ({
   columnsProps,
   dataProps,
@@ -48,9 +49,27 @@ const Table = ({
   }, [dataProps]);
 
 
+  function drawBody(item, type) {
+    switch (type) {
+      case "text":
+        return item
+      case "checkbox":
+        console.log(item)
+        return <input readOnly type="checkbox" checked={(item==="true")} />
+      case "select":
+        return <select>{item.map((el, i)=>
+            <option key={i} value={el.value}>{el.title}</option>
+        )}</select>
+      case "button":
+        return <button onClick={item.action}>{item.title}</button>
+    }
+  }
+
+
   return (
     <div className="universal_table">
       {/* 👇 Pagination Per Page Changing Select 👇  */}
+      {/*{console.log(data)}*/}
 
       <div className="d-flex  ps-4 me-5 pe-4 gap-2 justify-content-between">
         <div className="d-flex gap-2">
@@ -83,14 +102,15 @@ const Table = ({
 
           {/* 👇 Table Setup 👇  */}
           <div className="d-flex align-items-end gap-2">
-            <button
-              style={{ width: "100px" }}
-              className="column_order"
-              download
-              onClick={()=>getExcelFile(data)}
-            >
-              Excel
-            </button>
+            {/*<button*/}
+            {/*  style={{ width: "100px" }}*/}
+            {/*  className="column_order"*/}
+            {/*  download*/}
+            {/*  onClick={()=>getExcelFile(data)}*/}
+            {/*>*/}
+            {/*  Excel*/}
+            {/*</button>*/}
+            <ExcelButton url={`http://localhost:8080/api/territory/excel?page=${currentPage}&size=${sizeOfPage}`} />
             {/* 👇 Hide / Show Columns 👇  */}
             <label style={{ width: "200px" }}>
               <span>Table Setup</span>
@@ -214,12 +234,12 @@ const Table = ({
                 {additionalColumns ? <th>More</th> : ""}
               </tr>
             </thead>
-            <tbody className={"table-caption"}>
-              {data.map((item) => (
+            <tbody className={""}>
+              {data?.map((item) => (
                 <tr key={item.id}>
                   {columns.map((col) => (
                     <td className={col.show ? "" : "hidden"} key={col.id}>
-                      {item[col.key]}
+                      {drawBody(item[col.key], col.type)}
                     </td>
                   ))}
                   {additionalColumns ? <td>{additionalColumns}</td> : ""}

@@ -34,7 +34,7 @@ public class ClientServiceImpl implements ClientService {
     public HttpEntity<?> postCliet(ClientDto clientDto) {
         CustomerCategory customerCategory = customerCategoryRepo.findById(clientDto.getCustomerCategoryId()).get();
         Territory territory = territoryRepo.findById(clientDto.getTerritoryId()).get();
-        Client reqClient = new Client(UUID.randomUUID(), clientDto.getName(), clientDto.getAddress(), clientDto.getPhone(), clientDto.getTin(), clientDto.getCompanyName(), clientDto.getLongitude(), clientDto.getLat(), clientDto.getActive(), customerCategory, territory);
+        Client reqClient = new Client(UUID.randomUUID(), clientDto.getName(), clientDto.getAddress(), clientDto.getPhone(), clientDto.getTin(), clientDto.getCompanyName(), clientDto.getLongitude(), clientDto.getLatitude(), clientDto.getActive(), customerCategory, territory);
         Client newClient = clientRepo.save(reqClient);
         return ResponseEntity.ok(newClient);
     }
@@ -53,7 +53,7 @@ public class ClientServiceImpl implements ClientService {
         editingClient.setTin(clientDto.getTin());
         editingClient.setCompanyName(clientDto.getCompanyName());
         editingClient.setLongitude(clientDto.getLongitude());
-        editingClient.setLatitude(clientDto.getLat());
+        editingClient.setLatitude(clientDto.getLatitude());
         editingClient.setCustomerCategory(customerCategoryRepo.findById(clientDto.getCustomerCategoryId()).get());
         editingClient.setTerritory(territoryRepo.findById(clientDto.getTerritoryId()).get());
         return ResponseEntity.ok(editingClient);

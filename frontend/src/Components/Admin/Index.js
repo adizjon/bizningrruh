@@ -59,15 +59,15 @@ function Index(props) {
                 </div>
                 <div>
                     <ul className={"flex align-items-center gap-2"}>
-                        {dashboard2.map(item => (<div style={{display: "flex", alignItems:'center', gap: 10,}}>
-                            <div className={"dateStyle"}>
+                        {dashboard2.map((item, index) => (<div style={{display: "flex", alignItems:'center', gap: 10,}}>
+                            <div key={index} className={"dateStyle"}>
                                 <li> 🗓️{item.localDate}</li>
                             </div>
                             <li style={{fontSize:"30px"}}>+{item.phone}</li>
                         </div>))}
                         <li className={"flex gap-1"}>
                             <img className={"w-16 h-8"} src={bell} alt=""/>
-                           <MenuListComposition/>
+                            <MenuListComposition/>
                         </li>
                     </ul>
                 </div>
@@ -99,13 +99,13 @@ function Index(props) {
                         <div>Stock</div>
                         <hr className="divider" />
                     </li>
-                    <li className={"w-6 h-[12%] flex justify-center items-center flex-col"}>
+                    <Link to={"/admin/client"} className={"w-6 h-[12%] flex justify-center items-center flex-col"}>
                         <div className="img-container">
-                            <img src={clients} alt=""/>
+                            <img  src={clients} alt=""/>
                         </div>
                         <div>Clients</div>
                         <hr className="divider" />
-                    </li>
+                    </Link>
                     <li className={"w-6 h-[12%] flex justify-center items-center flex-col"}>
                         <div className="img-container">
                             <img src={android} alt=""/>
@@ -130,7 +130,7 @@ function Index(props) {
                     </Link>
                 </ul>
             </div>
-            <div className={"mt-20 h-full ml-[100px]"}>
+            <div className={"mt-20 h-full ml-[120px]"}>
                 <Outlet/>
             </div>
         </div>

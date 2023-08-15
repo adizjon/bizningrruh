@@ -12,7 +12,6 @@ function* watchLoginUser(action) {
                 method: "POST",
                 data: action.payload
             })
-            console.log(res)
             const resString = JSON.stringify(res);
             if (res.data === "BAD_CREDENTIALS") {
                 alert("parol yoki login xato")

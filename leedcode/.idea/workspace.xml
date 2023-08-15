@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="89bda389-787b-4fa3-be05-940f7d6cb421" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Controller/TGBotController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/DTO/PaginationRes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../forLitCode/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../forLitCode/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../forLitCode/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../forLitCode/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../forLitCode/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../forLitCode/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../forLitCode/src/main/java/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/Components/ExcelButton/ExcelButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/Components/YMap/YandexMap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/Redux/reducers/ClientsReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/Redux/reducers/TerritoryReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/Redux/sagas/ClientSaga.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/Redux/sagas/TerritorySaga.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/test/GoogleMap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/test/MapConteiner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Controller/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Controller/CustomerCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Controller/CustomerCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Controller/TerritoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Controller/TerritoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Entity/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Entity/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Payload/ClientDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Payload/ClientDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Repository/ClientRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Repository/ClientRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Service/ClientService/ClientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Service/ClientService/ClientServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Service/TerritoryService/TerritoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/example/backend/Service/TerritoryService/TerritoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Admin/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Admin/Index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Api/apiCall.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Api/apiCall.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Client/Client.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Client/Client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/CustomerCategory/CustomerCategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/CustomerCategory/CustomerCategory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Login/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Table/Table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Territory/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Territory/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/UniversalFilter/a.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/UniversalFilter/a.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/UniversalModal/UniversalModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/UniversalModal/UniversalModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/UniversalTable/Drag2/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/UniversalTable/Drag2/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/UniversalTable/DragColumns/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/UniversalTable/DragColumns/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Redux/reducers/DashboardReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Redux/reducers/DashboardReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Redux/reducers/SettingReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Redux/reducers/SettingReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Redux/sagas/DashboardSaga.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Redux/sagas/DashboardSaga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Redux/sagas/LoginSaga.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Redux/sagas/LoginSaga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Redux/sagas/RootSaga.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Redux/sagas/RootSaga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Redux/sagas/tableSaga.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Redux/sagas/tableSaga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Redux/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Redux/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/test/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/test/index.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2TxgwKgWG3MBmu3a6Av41lnMGtj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/bizningrruh/backend",
+    "spring.configuration.checksum": "d60eb4df70eef443237a86189cb8e66a"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="LeedcodeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="leedcode" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.leedcode.LeedcodeApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="89bda389-787b-4fa3-be05-940f7d6cb421" name="Changes" comment="" />
+      <created>1691990385212</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1691990385212</updated>
+      <workItem from="1691990386750" duration="11043000" />
+      <workItem from="1692012827560" duration="20000" />
+    </task>
+    <servers />
+  </component>
+</project>

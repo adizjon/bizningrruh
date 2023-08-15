@@ -28,10 +28,8 @@ const DATA = [
 
 function App(props) {
   const [stores, setStores] = useState(DATA)
-  // console.log(stores)
 
   function getData(oldData){
-    // console.log(oldData)
     let newData = oldData.map(obj=>{
       obj['id'] = obj['key'];
       obj['name'] = obj['title'];
@@ -39,12 +37,10 @@ function App(props) {
       delete obj['title'];
       return obj
     })
-    console.log(newData)
     // setStores(newData)
   }
 
   useEffect(()=>{
-    console.log(props.columns)
     getData(props.columns)
   },[])
 
