@@ -138,11 +138,11 @@ function App() {
         <Routes>
             <Route path={"/"} element={<Login/>}/>
             <Route path={"/filter"} element={<Hello/>}/>
-            <Route path={"/map"} element={<ClientMap/>}/>
             <Route path={"/b"} element={<B/>}/>
 
             <Route path={"/admin"} element={<Admin/>}>
                 <Route path={"/admin/client"} element={<Client/>}/>
+                <Route path={"/admin/map"} element={<ClientMap/>}/>
                 <Route path={"/admin/settings"} element={<SettingPanel/>}>
                     <Route path={"/admin/settings/territory"} element={<Territory/>}/>
 

@@ -39,6 +39,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/territory/get").permitAll()
 
                                 .requestMatchers("/api/setting").permitAll()
+                                .requestMatchers("/api/client").permitAll()
 
                                 .requestMatchers("/dashboard").permitAll()
                                 .requestMatchers("/api/territory/upload").permitAll()

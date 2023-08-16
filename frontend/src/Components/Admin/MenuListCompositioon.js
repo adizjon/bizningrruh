@@ -76,7 +76,7 @@ export default function MenuListComposition() {
      }
 
     return (
-        <Stack direction="row" spacing={2}>
+        <Stack  direction="row" spacing={2}>
             <Paper>
                 {/* Put your content inside the Paper component */}
             </Paper>
@@ -114,6 +114,7 @@ export default function MenuListComposition() {
                                         id="composition-menu"
                                         aria-labelledby="composition-button"
                                         onKeyDown={handleListKeyDown}
+
                                     >
                                         <MenuItem>Profile</MenuItem>
                                         <MenuItem>My account</MenuItem>
