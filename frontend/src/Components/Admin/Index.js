@@ -165,7 +165,7 @@ function Index(props) {
                     <div onClick={()=>clientsMap()} className="clients-top"  style={{cursor:"pointer",fontSize:20}}><h3>Clients on the map</h3></div>
                     {/* Content of the modal */}
                     {/* ... */}
-                    <hr style={{height:10}}/>
+                    <hr style={{height:10 }}/>
                     <div onClick={()=>clientss()} className="clients-bottom" style={{cursor:"pointer",fontSize:20}}><h5>Clients</h5></div>
                 </div>
             )}
