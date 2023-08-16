@@ -1,9 +1,11 @@
 package com.example.backend.Controller;
 
 import com.example.backend.Payload.ClientDto;
+import com.example.backend.Repository.ClientRepo;
 import com.example.backend.Service.ClientService.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,16 +17,19 @@ import java.util.UUID;
 @CrossOrigin
 public class ClientController {
     private final ClientService clientService;
+    private final ClientRepo clientRepo;
+
 
     @GetMapping
     public HttpEntity<?> getClients(
-            @RequestParam(defaultValue = "") List<UUID> city,
-            @RequestParam(defaultValue = "") List<UUID> customerCategory,
-            @RequestParam(defaultValue = "") Boolean active,
-            @RequestParam(defaultValue = "") Boolean tin,
-            @RequestParam(defaultValue = "") String search
+//            @RequestParam(defaultValue = "") List<UUID> city,
+//            @RequestParam(defaultValue = "") List<UUID> customerCategory,
+//            @RequestParam(defaultValue = "") Boolean active,
+//            @RequestParam(defaultValue = "") Boolean tin,
+//            @RequestParam(defaultValue = "") String search
     ) {
-        return clientService.getClients(city, customerCategory, active, tin,search);
+//        return clientService.getClients(city, customerCategory, active, tin,search);
+        return ResponseEntity.ok(clientRepo.findAll());
     }
 
     @GetMapping("/search")

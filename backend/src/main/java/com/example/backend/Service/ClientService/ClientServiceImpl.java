@@ -25,8 +25,9 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public HttpEntity<?> getClients(List<UUID> city, List<UUID> customerCategory, Boolean active, Boolean tin, String search) {
-        List<ClientProjection> allByFilter = clientRepo.findAllByFilter(city, customerCategory, active, tin, search);
-        return ResponseEntity.ok(allByFilter);
+//        List<ClientProjection> allByFilter = clientRepo.findAllByFilter(city, customerCategory, active, tin, search);
+//        return ResponseEntity.ok(allByFilter);
+        return (HttpEntity<?>) clientRepo.findAll();
     }
 
     @Override

@@ -141,12 +141,19 @@ function Client(props) {
                                         <option key={territory.id} value={territory.id}>{territory.title}</option>
                                     ))}
                                 </select>
-                                <input className={"w-44 form-control my-1"} placeholder={"Name"} type="text" />
-                                <input className={"w-44 form-control my-1"} placeholder={"Company Name"} type="text" />
-                                <input className={"w-44 form-control my-1"} placeholder={"Address"} type="text" />
-                                <input className={"w-44 form-control my-1"} placeholder={"Reference point"} type="text" />
-                                <input className={"w-44 form-control my-1"} placeholder={"Telephone"} type="text" />
-                                <input className={"w-44 form-control my-1"} placeholder={"TIN"} type="text" />
+                                <input  required={true}  className={"w-44 form-control my-1"} placeholder={"Name"} type="text" />
+                                <input   required={true}  className={"w-44 form-control my-1"} placeholder={"Company Name"} type="text" />
+                                <input  required={true} className={"w-44 form-control my-1"} placeholder={"Address"} type="text" />
+                                <input  required={true} className={"w-44 form-control my-1"} placeholder={"Reference point"} type="text" />
+                              <input
+                                  required={true}
+                                  className={"w-44 form-control my-1"}
+                                  placeholder={"Telephone"}
+                                  type="number"
+                                  minLength={12} // minLength ni 12 ga o'zgartiring
+                              />
+                                <input  required={true} className={"w-44 form-control my-1"} placeholder={"TIN"} type="text" />
+
                             </div>
                             <button className={"bg-green-500 text-white w-4/5 py-2 rounded shadow mt-5"}>save</button>
                         </form>
