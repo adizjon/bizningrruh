@@ -15,7 +15,7 @@ function ClientMap(props) {
             url: "/api/territory/get",
             method: "GET"
         }).then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             setMapState(res.data)
         })
     }, [])
@@ -27,8 +27,8 @@ function ClientMap(props) {
 
         setTemplate([longitude, latitude])
 
-        console.log('Latitude:', latitude);
-        console.log('Longitude:', longitude);
+        // console.log('Latitude:', latitude);
+        // console.log('Longitude:', longitude);
         setMapState(
             {center: [latitude, longitude], zoom: 10}
         );

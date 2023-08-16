@@ -32,11 +32,15 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public HttpEntity<?> postCliet(ClientDto clientDto) {
-        CustomerCategory custmvjhbjlbkuvomerCategory = customerCategoryRepo.findById(clientDto.getCustomerCategoryId()).get();
-        Territory territory = territoryRepo.findById(clientDto.getTerritoryId()).get();
-        Client reqClient = new Client(UUID.randomUUID(), clientDto.getName(), clientDto.getAddress(), clientDto.getPhone(), clientDto.getTin(), clientDto.getCompanyName(), clientDto.getLongitude(), clientDto.getLatitude(), clientDto.getActive(), customerCategory, territory);
-        Client newClient = clientRepo.save(reqClient);
-        return ResponseEntity.ok(newClient);
+                if (clientDto.isValid()){
+            CustomerCategory customerCategory = customerCategoryRepo.findById(clientDto.getCustomerCategoryId()).get();
+            Territory territory = territoryRepo.findById(clientDto.getTerritoryId()).get();
+            Client reqClient = new Client(UUID.randomUUID(), clientDto.getName(), clientDto.getAddress(), clientDto.getPhone(), clientDto.getTin(), clientDto.getCompanyName(), clientDto.getLongitude(), clientDto.getLatitude(), clientDto.getActive(), customerCategory, territory);
+            Client newClient = clientRepo.save(reqClient);
+            return ResponseEntity.ok(newClient);
+        }else {
+            return ResponseEntity.badRequest().body(clientDto.getValidationErrorMessage);
+        }
     }
 
     @Override

@@ -14,11 +14,8 @@ import MenuListComposition from "./Components/Admin/MenuListCompositioon";
 import Client from "./Components/Client/Client";
 import CustomerCategory from "./Components/CustomerCategory/CustomerCategory";
 import B from "./Components/UniversalFilter/B";
-<<<<<<< HEAD
 import ClientMap from "./Components/ClientMap/clientMap";
-=======
 import Hello from "./Components/UniversalFilter/Hello";
->>>>>>> 9889ca73303769ab248d08ecbc8495fcdae907e5
 
 function App() {
     const [data, setData] = useState([]);
