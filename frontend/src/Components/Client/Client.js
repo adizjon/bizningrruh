@@ -11,6 +11,8 @@ import Rodal from "rodal";
 import "rodal/lib/rodal.css"
 import {YMaps} from "react-yandex-maps";
 import ContentLoader from "../Loading/ContentLoaders";
+import UniversalFilter from "../UniversalFilter/UniversalFilter";
+import Hello from "../UniversalFilter/Hello";
 
 function Client(props) {
     const [isOpen, setIsOpen] = useState(false)
@@ -208,6 +210,7 @@ function Client(props) {
                         <button onClick={() => handleVisible(true)}
                                 className={"bg-green-500 shadow px-3 py-2 rounded text-white m-4 mt-0"}>Add Client
                         </button>
+                    <Hello/>
                         <Table
                             dataProps={props.data}
                             columnsProps={props.columns}

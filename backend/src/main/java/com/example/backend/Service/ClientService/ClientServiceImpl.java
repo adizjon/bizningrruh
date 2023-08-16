@@ -40,7 +40,7 @@ public class ClientServiceImpl implements ClientService {
             Client newClient = clientRepo.save(reqClient);
             return ResponseEntity.ok(newClient);
         }else {
-            return ResponseEntity.badRequest().body(clientDto.getValidationErrorMessage);
+                    return ResponseEntity.badRequest().body("Validation failed. " + clientDto.getValidationErrorMessage);
         }
     }
 
