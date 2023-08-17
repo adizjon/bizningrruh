@@ -162,7 +162,7 @@ function Hello(props) {
 
     useEffect(() => {
         axios({
-            url: "http://localhost:8080/customerCategory", method: "get"
+            url: "http://localhost:8080/api/customerCategory", method: "get"
         }).then(res => {
             setCategory(res.data)
         })
