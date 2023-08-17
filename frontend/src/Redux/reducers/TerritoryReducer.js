@@ -8,7 +8,7 @@ const tableReducer = createSlice({
         columns: [
             {
                 id: 1,
-                title: "",
+                title: "Active",
                 key: "active",
                 type: "checkbox",
                 show: true,

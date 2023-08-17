@@ -25,11 +25,11 @@ public class ClientDto {
     @Column(nullable = false)
     private String companyName;
     @Column(nullable = false)
-    private String longitude;
+    private Double longitude;
     @Column(nullable = false)
     private Boolean active;
     @Column(nullable = false)
-    private String latitude;
+    private Double latitude;
     @Column(nullable = false)
     private Integer customerCategoryId;
     @Column(nullable = false)
@@ -41,9 +41,7 @@ public class ClientDto {
                 && isNotNullOrEmpty(phone)
                 && isNotNullOrEmpty(tin)
                 && isNotNullOrEmpty(companyName)
-                && isNotNullOrEmpty(longitude)
                 && isNotNull(active)
-                && isNotNullOrEmpty(latitude)
                 && isNotNull(customerCategoryId)
                 && isNotNull(territoryId);
     }

@@ -29,9 +29,9 @@ public class Client {
 
     private String companyName;
 
-    private String longitude;
+    private Double longitude;
 
-    private String latitude;
+    private Double latitude;
 
     private Boolean active;
 
