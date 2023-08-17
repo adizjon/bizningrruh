@@ -21,6 +21,7 @@ import user from "../../Images/user.png"
 import money from "../../Images/money.png"
 import key from "../../Images/key.png"
 import shutdown from "../../Images/shutdown.png"
+import MenuListComposition from "./MenuListCompositioon";
 function Index(props) {
     const { dashboardReducer } = props;
     const [nowtime, setNowtime] = useState('');
@@ -90,7 +91,8 @@ function Index(props) {
                                 </div>
                             ))}
                             <li className={'flex gap-1'}>
-                                <img className={'w-16 h-8'} src={bell} alt="" />
+                                <MenuListComposition/>
+                                {/*<img className={'w-16 h-8'} src={bell} alt="" />*/}
                                 {/* Add your MenuListComposition here */}
                             </li>
                         </ul>
