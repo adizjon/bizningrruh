@@ -22,14 +22,13 @@ public class ClientController {
 
     @GetMapping
     public HttpEntity<?> getClients(
-//            @RequestParam(defaultValue = "") List<UUID> city,
-//            @RequestParam(defaultValue = "") List<UUID> customerCategory,
-//            @RequestParam(defaultValue = "") Boolean active,
-//            @RequestParam(defaultValue = "") Boolean tin,
-//            @RequestParam(defaultValue = "") String search
+            @RequestParam(defaultValue = "") List<UUID> city,
+            @RequestParam(defaultValue = "") List<UUID> customerCategory,
+            @RequestParam(defaultValue = "") Boolean active,
+            @RequestParam(defaultValue = "") Boolean tin,
+            @RequestParam(defaultValue = "") String search
     ) {
-//        return clientService.getClients(city, customerCategory, active, tin,search);
-        return ResponseEntity.ok(clientRepo.findAll());
+       return clientService.getClients(city, customerCategory, active, tin,search);
     }
 
     @GetMapping("/search")
