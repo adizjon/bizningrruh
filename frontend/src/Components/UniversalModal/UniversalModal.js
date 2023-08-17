@@ -31,7 +31,6 @@ function UniversalModal({visible, inputs, setVisible, buttons, yandexMap, width,
                 return <select className={"form-control my-2"} onChange={element.action} key={index} value={element.value}>
                     <option value="">select</option>
                     {element.render.map((item, i)=> {
-                        console.log(inputs)
                         return <option key={i} value={element.title}>
                             {item[element.title]}
                         </option>

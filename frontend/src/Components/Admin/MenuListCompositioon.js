@@ -67,7 +67,6 @@ export default function MenuListComposition() {
         if (prevOpen.current === true && open === false) {
             anchorRef.current.focus();
         }
-
         prevOpen.current = open;
     }, [open]);
 

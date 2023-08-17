@@ -33,6 +33,7 @@ const Table = ({
   setModalColumns,
 }) => {
 
+  console.log(data)
 
   const location = useLocation();
   useEffect(() => {
@@ -54,7 +55,6 @@ const Table = ({
       case "text":
         return item
       case "checkbox":
-        console.log(item)
         return <input readOnly type="checkbox" checked={(item==="true")} />
       case "select":
         return <select>{item.map((el, i)=>
