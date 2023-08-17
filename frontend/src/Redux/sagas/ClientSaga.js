@@ -23,16 +23,18 @@ function* saveTerritorySaga(action) {
             url: "/api/client",
             method: "POST",
             data: action.payload
-        }))
-        yield call(getClientsSaga)
-    } catch (e) {
-        alert(e)
-        toast.error(e, {
+        }));
+        yield call(getClientsSaga);
+    } catch (error) {
+        const errorMessage = error.response.data || error.response.message;
+        alert(errorMessage);
+        toast.error(errorMessage, {
             position: toast.POSITION.TOP_RIGHT
         });
     }
-}
 
+
+}
 export default function* territorySaga() {
     yield takeEvery("client/getClients", getClientsSaga)
     yield takeEvery("client/saveClient", saveTerritorySaga)

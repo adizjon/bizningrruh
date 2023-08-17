@@ -22,7 +22,7 @@ public class Client {
     private String name;
 
     private String address;
-
+    @Column(unique = true)
     private String phone;
 
     private String tin;
