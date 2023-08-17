@@ -148,6 +148,8 @@ function Client(props) {
             longitude: props.currentLocation.longitude,
             latitude: props.currentLocation.latitude,
         })
+        setIsOpen(false)
+
     }
 
 
