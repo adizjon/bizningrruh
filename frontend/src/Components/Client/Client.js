@@ -11,7 +11,6 @@ import Rodal from "rodal";
 import "rodal/lib/rodal.css"
 import {YMaps} from "react-yandex-maps";
 import ContentLoader from "../Loading/ContentLoaders";
-import UniversalFilter from "../UniversalFilter/UniversalFilter";
 import Hello from "../UniversalFilter/Hello";
 
 function Client(props) {
