@@ -1,4 +1,4 @@
-package com.example.asadbeksgroup.Config;
+package com.example.backend.Config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;

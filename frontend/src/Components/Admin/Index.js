@@ -32,7 +32,7 @@ function Index(props) {
     const navigate=useNavigate()
     useEffect(() => {
         axios({
-            url: 'http://localhost:8080/dashboard',
+            url: 'https://localhost/dashboard',
             method: 'get',
         }).then(res => {
             setDashboard([res.data.body]);

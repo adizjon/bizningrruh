@@ -15,7 +15,7 @@ function CustomerCategory(props) {
 
     function getCustomerCategory() {
         axios({
-            url: "http://localhost:8080/api/customerCategory", method: "get"
+            url: "https://localhost/api/customerCategory", method: "get"
         }).then(res => {
             setCategory(res.data)
         })
@@ -28,7 +28,7 @@ function CustomerCategory(props) {
     function mySubmit(data) {
         if (currentItem !== null) {
             axios({
-                url: "http://localhost:8080/api/customerCategory/put/" + currentItem, method: "put", data: data
+                url: "https://localhost/api/customerCategory/put/" + currentItem, method: "put", data: data
             }).then(res => {
                 getCustomerCategory()
             })
@@ -39,7 +39,7 @@ function CustomerCategory(props) {
             })
         } else {
             axios({
-                url: "http://localhost:8080/api/customerCategory", method: "post", data: data
+                url: "https://localhost/api/customerCategory", method: "post", data: data
             }).then(res => {
                 getCustomerCategory()
             })
@@ -68,7 +68,7 @@ function CustomerCategory(props) {
 
     function getInActive(type) {
         axios({
-            url: "http://localhost:8080/api/customerCategory/getInActive/" + type,
+            url: "https://localhost/api/customerCategory/getInActive/" + type,
             method: "get"
         }).then(res => {
             setCategory(res.data)

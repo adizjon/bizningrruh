@@ -117,7 +117,7 @@ function Index(props) {
             navigate(loginReducer.navigateTo)
         }
         axios({
-            url: "http://localhost:8080/dashboard", method: "get"
+            url: "https://localhost/dashboard", method: "get"
         }).then(res => {
             setSupportPhone(res.data.body.phone)
         })

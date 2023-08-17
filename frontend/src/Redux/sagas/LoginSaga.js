@@ -8,7 +8,7 @@ function* watchLoginUser(action) {
     try {
         if (currentState.phone!=="" && currentState.password!=="") {
             const res = yield axios({
-                url: "http://localhost:8080/api/auth/login",
+                url: "https://localhost/api/auth/login",
                 method: "POST",
                 data: action.payload
             })

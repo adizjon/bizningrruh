@@ -51,7 +51,7 @@ function Client(props) {
      const [drawOfFilter,setDrawOfFilter]=useState(false)
     useEffect(() => {
         axios({
-            url: "http://localhost:8080/api/customerCategory",
+            url: "https://localhost/api/customerCategory",
             method: "GET"
         }).then(res => {
             setCategories(res.data)

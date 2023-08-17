@@ -95,7 +95,7 @@ function App() {
 
     function getRefreshToken() {
         axios({
-            url: "http://localhost:8080/api/auth/getMe?accessToken=" + localStorage.getItem("accessToken"),
+            url: "https://localhost/api/auth/getMe?accessToken=" + localStorage.getItem("accessToken"),
             method: "get"
         }).then(res => {
             let user = res.data.user.roles
@@ -119,7 +119,7 @@ function App() {
             if (checkPath[0] !== "FREE") {
                 if (localStorage.getItem("refreshToken")) {
                     axios({
-                        url: "http://localhost:8080/api/auth/refresh?refreshToken=" + localStorage.getItem("refreshToken"),
+                        url: "https://localhost/api/auth/refresh?refreshToken=" + localStorage.getItem("refreshToken"),
                         method: "POST"
                     }).then((res) => {
                         localStorage.setItem("accessToken", res.data)
