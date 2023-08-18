@@ -90,7 +90,7 @@ function Index(props) {
                                     <li style={{ fontSize: '30px' }}>+{item.phone}</li>
                                 </div>
                             ))}
-                            <li className={'flex gap-1'}>
+                            <li className={'flex gap-1'} style={{marginLeft:50}}>
                                 <MenuListComposition/>
                                 {/*<img className={'w-16 h-8'} src={bell} alt="" />*/}
                                 {/* Add your MenuListComposition here */}
@@ -163,7 +163,7 @@ function Index(props) {
 
             {/* Modal or content for Clients */}
             {showClientsModal && (
-                <div style={{marginLeft:150,width:200,background:"black",color:"white",padding:10,marginTop:300,height:100,paddingTop:20}} className="clients-modal">
+                <div style={{marginLeft:150,width:200,background:"#405058",color:"white",padding:10,marginTop:300,height:100,paddingTop:20,borderRadius:20}} className="clients-modal">
                     <div onClick={()=>clientsMap()} className="clients-top"  style={{cursor:"pointer",fontSize:20}}><h3>Clients on the map</h3></div>
                     {/* Content of the modal */}
                     {/* ... */}

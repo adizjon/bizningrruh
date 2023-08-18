@@ -2,7 +2,6 @@ import {BrowserRouter, Route, Routes, useLocation, useNavigate} from "react-rout
 import Login from "./Components/Login";
 import {useEffect, useState} from "react";
 import axios from "axios";
-// import PageNotFound from "./Components/PageNotFound/PageNotFound";
 import SettingPanel from "./Components/Settings/SettingPanel";
 import UniversalTable from "./Components/UniversalTable";
 import Admin from "./Components/Admin/Index"
@@ -13,7 +12,6 @@ import Test from "./test";
 import MenuListComposition from "./Components/Admin/MenuListCompositioon";
 import Client from "./Components/Client/Client";
 import CustomerCategory from "./Components/CustomerCategory/CustomerCategory";
-import B from "./Components/UniversalFilter/B";
 import ClientMap from "./Components/ClientMap/clientMap";
 import Hello from "./Components/UniversalFilter/Hello";
 
@@ -138,7 +136,6 @@ function App() {
         <Routes>
             <Route path={"/"} element={<Login/>}/>
             <Route path={"/filter"} element={<Hello/>}/>
-            <Route path={"/b"} element={<B/>}/>
 
             <Route path={"/admin"} element={<Admin/>}>
                 <Route path={"/admin/client"} element={<Client/>}/>
