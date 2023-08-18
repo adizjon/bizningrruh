@@ -54,7 +54,7 @@ function Client(props) {
 
     useEffect(() => {
         axios({
-            url: "http://localhost:8080/api/customerCategory",
+            url: "https://localhost/api/customerCategory",
             method: "GET"
         }).then(res => {
             setCategories(res.data)

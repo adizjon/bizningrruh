@@ -4,7 +4,7 @@ import axios from "axios";
 function Index({url, method, data}) {
     let accessToken = localStorage.getItem("accessToken");
     return axios({
-        url: "http://localhost:8080" + url,
+        url: "https://localhost" + url,
         method,
         data,
         headers: {

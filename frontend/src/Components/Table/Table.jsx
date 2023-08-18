@@ -1,11 +1,13 @@
 import Select from "react-select";
 import { connect } from "react-redux";
 import {tableActions} from "../../Redux/reducers/tableReducer";
-import { useEffect } from "react";
+import {useEffect, useState} from "react";
 import Pagination from "@mui/material/Pagination";
 import { useLocation } from "react-router-dom";
 import "./Table.css";
 import ExcelButton from "../ExcelButton/ExcelButton";
+import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
+import Rodal from "rodal";
 const Table = ({
   columnsProps,
   dataProps,
@@ -31,9 +33,13 @@ const Table = ({
   dropColumn,
   modalColumns,
   setModalColumns,
+                 reorderColumns,
+    showHide,
+                 setShowHide,
+    hideColumn
 }) => {
+  const [isOpen, setIsOpen] = useState(false)
 
-  console.log(data)
 
   const location = useLocation();
   useEffect(() => {
@@ -65,11 +71,80 @@ const Table = ({
     }
   }
 
+  const handleDragEnd = (result) => {
+    if (!result.destination) return;
+
+    const sourceIndex = result.source.index;
+    const destinationIndex = result.destination.index;
+
+    reorderColumns({ sourceIndex, destinationIndex });
+  };
+
+  // function hide(index) {
+  //   columns[index].show = !columns[index].show
+  //   console.log(columns);
+  // }
+
+  function checkColumns(name) {
+    let column = columns.find(column => column.title === name)
+    return column.show
+  }
 
   return (
     <div className="universal_table">
       {/* 👇 Pagination Per Page Changing Select 👇  */}
       {/*{console.log(data)}*/}
+
+
+
+
+      <Rodal visible={isOpen} onClose={()=>{setIsOpen(false)}}>
+        <div className={"relative h-full"}>
+          <DragDropContext onDragEnd={handleDragEnd}>
+            <Droppable droppableId="columnList" direction="vertical">
+              {(provided) => (
+                  <div className={"flex flex-column absolute w-100 gap-1"} {...provided.droppableProps} ref={provided.innerRef}>
+                    {modalColumns.map((item, index) => (
+                        <Draggable
+                            key={item.id.toString()}
+                            draggableId={item.id.toString()}
+                            index={index}
+                        >
+                          {(provided, snapshot) => (
+                              <div
+                                  ref={provided.innerRef}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                  className={
+                                      "w-100 d-flex rounded border bg-white p-2" +
+                                      (item.show ? "" : " hidden")
+                                  }
+                                  style={{
+                                    ...provided.draggableProps.style,
+                                    left: 0,
+                                    top: 0,
+                                    position: "relative",
+                                  }}
+                              >
+                                {item.title}
+                              </div>
+                          )}
+                        </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+          <button className={"bg-green-500 bottom-0 left-0 absolute px-3 py-2 rounded shadow text-white mt-3"} onClick={saveColumnOrder} >save</button>
+        </div>
+      </Rodal>
+
+
+
+
+
+
 
       <div className="d-flex  ps-4 me-5 pe-4 gap-2 justify-content-between">
         <div className="d-flex gap-2">
@@ -101,6 +176,22 @@ const Table = ({
           )}
 
           {/* 👇 Table Setup 👇  */}
+            <div className='relative flex justify-end flex-col'>
+              <button className='px-3 py-2 bg-white border border-blue-700  rounded-xl' onClick={()=>setShowHide(!showHide)}>show/hide columns</button>
+              {showHide?
+                  <ul style={{position:"absolute",top:"62px"}} className='rounded-xl overflow-hidden box-border absolute border-1 w-full text-blue-700 border border-blue-700 flex flex-col'>
+                    {
+                        columns.map((column, index)=>(
+                            <li onClick={()=>hideColumn(index)} className={'px-2 py-1 '+ (checkColumns(column.title)?'bg-white hover:bg-slate-100':'bg-blue-700 text-white hover:bg-blue-800')} key={column.key}>{column.title.toLowerCase()}</li>
+                        ))
+
+                    }
+                  </ul>
+                  :
+                  ""}
+            </div>
+
+
           <div className="d-flex align-items-end gap-2">
             {/*<button*/}
             {/*  style={{ width: "100px" }}*/}
@@ -135,7 +226,10 @@ const Table = ({
                 data-toggle="modal"
                 data-target="#exampleModal"
                 className="column_order"
-                onClick={() => setColumnModalVisibility(true)}
+                onClick={() => {
+                  setColumnModalVisibility(true)
+                  setIsOpen(true)
+                }}
               >
                 Column Order
               </button>

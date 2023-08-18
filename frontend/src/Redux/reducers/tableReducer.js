@@ -11,6 +11,7 @@ const tableReducer = createSlice({
     currentDraggingColumn: 0,
     columnOrderModalVisibility: false,
     modalColumns: [],
+    showHide: false
   },
   name: "table",
   reducers: {
@@ -26,6 +27,7 @@ const tableReducer = createSlice({
       state.currentDraggingColumn = action.payload;
     },
     filterVisibility: (state, stateAction) => {
+      console.log(stateAction)
       const { action } = stateAction.payload;
 
       if (state.columns.length === 0) state.columns = state.copyOfColumns;
@@ -98,6 +100,23 @@ const tableReducer = createSlice({
     saveColumnOrder: (state, action) => {
       state.columns = state.modalColumns;
     },
+    reorderColumns: (state, action) => {
+      console.log(state)
+      const { sourceIndex, destinationIndex } = action.payload;
+
+      const updatedColumns = [...state.modalColumns];
+      const [draggedColumn] = updatedColumns.splice(sourceIndex, 1);
+      updatedColumns.splice(destinationIndex, 0, draggedColumn);
+
+      state.modalColumns = updatedColumns;
+
+    },
+    setShowHide: (state, action) => {
+      state.showHide = action.payload
+    },
+    hideColumn: (state, action) => {
+      state.columns[action.payload].show = !state.columns[action.payload].show
+    }
   },
 });
 
