@@ -31,11 +31,8 @@ function SettingPanel(props) {
 
     return (
         <div>
-            {
-                loading ? <div>
-                        <ContentLoader />
-                </div>
-                : <div className={"biggestDiv w-52 py-7 px-10 bg-white"}>
+
+               <div className={"biggestDiv w-52 py-7 px-10 bg-white"}>
                     <div className={"panel"}>
                         <nav>
                             <ul style={{position: "relative", zIndex: 1}}>
@@ -52,7 +49,6 @@ function SettingPanel(props) {
                         <Outlet/>
                     </div>
                 </div>
-            }
         </div>
     );
 }

@@ -9,6 +9,9 @@ import com.example.backend.Repository.CustomerCategoryRepo;
 import com.example.backend.Repository.TerritoryRepo;
 import com.example.backend.projection.ClientProjection;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -25,22 +28,22 @@ public class ClientServiceImpl implements ClientService {
 
 
     @Override
-    public HttpEntity<?> getClients(List<UUID> city, List<UUID> customerCategory, Boolean active, Boolean tin, String search) {
-        List<ClientProjection> allByFilter = clientRepo.findAllByFilter(city, customerCategory, active, tin, search);
+    public HttpEntity<?> getClients(List<UUID> city, List<Integer> customerCategory, Boolean active, Boolean tin, String search, Integer page, Integer size) {
+        Pageable pageRequest = PageRequest.of(page, size);
+        Page<ClientProjection> allByFilter = clientRepo.findClientsByFilters(tin, customerCategory, active, city, search,pageRequest);
         return ResponseEntity.ok(allByFilter);
-//        return (HttpEntity<?>) clientRepo.findAll();
     }
 
     @Override
     public HttpEntity<?> postCliet(ClientDto clientDto) {
-                if (clientDto.isValid()){
+        if (clientDto.isValid()) {
             CustomerCategory customerCategory = customerCategoryRepo.findById(clientDto.getCustomerCategoryId()).get();
             Territory territory = territoryRepo.findById(clientDto.getTerritoryId()).get();
             Client reqClient = new Client(UUID.randomUUID(), clientDto.getName(), clientDto.getAddress(), clientDto.getPhone(), clientDto.getTin(), clientDto.getCompanyName(), clientDto.getLongitude(), clientDto.getLatitude(), clientDto.getActive(), customerCategory, territory);
             Client newClient = clientRepo.save(reqClient);
             return ResponseEntity.ok(newClient);
-        }else {
-                    return ResponseEntity.badRequest().body("Validation failed. " + clientDto.getValidationErrorMessage);
+        } else {
+            return ResponseEntity.badRequest().body("Validation failed. " + clientDto.getValidationErrorMessage);
         }
     }
 

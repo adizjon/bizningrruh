@@ -4,12 +4,13 @@ import Table from "../Table/Table";
 import {connect, useSelector} from "react-redux";
 import {territoryActions} from "../../Redux/reducers/TerritoryReducer";
 import YandexMap from "../YMap/YandexMap";
+import ContentLoader from "../Loading/ContentLoaders";
 
 function Index(props) {
     const territoryObj = useSelector(state => state.territoryReducer.territoryObj);
 
     const [identifier, setIdentifier] = useState({title: "", code: "", sorting: 0, active: false})
-
+    const [loading, setLoading] = useState(false)
     const [isVisible, setIsVisible] = useState(false)
 
     const [inputs, setInputs] = useState([
@@ -26,7 +27,12 @@ function Index(props) {
         }
     ])
     const [buttons, setButtons] = useState([])
-
+    useEffect(()=>{
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000)
+    },[])
 
 
 
@@ -93,39 +99,53 @@ function Index(props) {
 
 
     return (
-        <div style={{maxWidth:"120%",maxHeight:"100%",overflow:"scroll"}}>
+        <div>
+
+             <div style={{maxWidth:"120%",maxHeight:"100%",overflowY:"scroll"}}>
+                 {
+                     loading?
+                       <div style={{marginLeft:400}}>
+                           <ContentLoader />
+                       </div>
+                         :
+
+                         <div>
+                             <UniversalModal width={800} height={400} visible={isVisible} inputs={inputs} yandexMap={<YandexMap action={territoryActions.setTerritoryLocation} />}
+                                             setVisible={() => handleVisible(false)} buttons={buttons} saveButton={{formData: territoryObj, action: props.saveTerritory}}/>
 
 
-            <UniversalModal width={800} height={400} visible={isVisible} inputs={inputs} yandexMap={<YandexMap action={territoryActions.setTerritoryLocation} />}
-                            setVisible={() => handleVisible(false)} buttons={buttons} saveButton={{formData: territoryObj, action: props.saveTerritory}}/>
-
-
-            <button style={{marginLeft:850,marginTop:20}} onClick={() => handleVisible(true)}
-                    className={"bg-green-600 text-white rounded-md px-1 py-2 "}>add territory
-            </button>
-            <div style={{marginLeft:20,marginTop:-40}}>
-                {/*<select  onChange={(e) => searching(e.target.value)} name="" id="" className="form-select w-25">*/}
-                {/*    <option value="true">Active</option>*/}
-                {/*    <option value="false">In Active</option>*/}
-                {/*</select>*/}
-            </div>
+                             <button style={{marginLeft:850,marginTop:20}} onClick={() => handleVisible(true)}
+                                     className={"bg-green-600 text-white rounded-md px-1 py-2 "}>add territory
+                             </button>
+                             <div style={{marginLeft:20,marginTop:-40}}>
+                                 {/*<select  onChange={(e) => searching(e.target.value)} name="" id="" className="form-select w-25">*/}
+                                 {/*    <option value="true">Active</option>*/}
+                                 {/*    <option value="false">In Active</option>*/}
+                                 {/*</select>*/}
+                             </div>
 
 
 
-            <div style={{marginTop:50}}>
-                <Table
-                    dataProps={props.data}
-                    columnsProps={props.columns}
-                    pagination={true}
-                    changeSizeMode={true}
-                    paginationApi={"/api/territory?page={page}&size={limit}"}
-                    columnOrderMode={true}
-                    changeSizeModeOptions={[5, 10, 20, 30, 40, 50]}
-                />
+                             <div style={{marginTop:50}}>
+                                 <Table
+                                     dataProps={props.data}
+                                     columnsProps={props.columns}
+                                     pagination={true}
+                                     changeSizeMode={true}
+                                     paginationApi={"/api/territory?page={page}&size={limit}"}
+                                     columnOrderMode={true}
+                                     changeSizeModeOptions={[5, 10, 20, 30, 40, 50]}
+                                 />
 
-            </div>
+                             </div>
+
+                         </div>
+                 }
+
+             </div>
 
         </div>
+
     );
 }
 

@@ -1,5 +1,6 @@
 package com.example.backend.projection;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 public interface ClientProjection {
@@ -13,19 +14,20 @@ public interface ClientProjection {
 
     String getTin();
 
-    String getRegistrationDate();
-
-    String getCategoryName();
+    LocalDate getRegistrationDate();
 
     String getTerritoryName();
 
+    String getCategoryName();
+
     String getCompanyName();
 
-    String getLongitude();
+    Double getLongitude();
 
-    String getLatitude();
+    Double getLatitude();
 
-    String getActive();
+    Boolean getActive();
+
 
 
 }

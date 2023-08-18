@@ -14,6 +14,6 @@ public class WebhookService {
     public void execute(SendMessage sendMessage) {
         HttpEntity<SendMessage> request = new HttpEntity<>(sendMessage);
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.postForObject("https://api.telegram.org/bot"+token+"/sendMessage", request, Object.class);
+        restTemplate.postForObject("https://api.telegram.org/bot" + token + "/sendMessage", request, Object.class);
     }
 }
