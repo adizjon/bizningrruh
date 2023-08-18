@@ -47,23 +47,27 @@ function ClientMap(props) {
     return (
         <div>
             {
-                loading ? <div>
+                loading ? <div className={"flex justify-center items-center w-100"} style={{marginLeft: 500}}>
                         <ContentLoader/>
                     </div>
                     : <div>
-                        <h1 style={{marginLeft:100,marginTop:50}}>Clients Map</h1>
+                        <h1 style={{marginLeft: 100, marginTop: 50}}>Clients Map</h1>
                         <Map
 
-                            state={{ center: [64.3291696289062, 39.82758596427712], zoom: 5 }}
+                            state={{center: [64.3291696289062, 39.82758596427712], zoom: 5}}
                             modules={['templateLayoutFactory']}
-                            style={{ width: '1200px', height: '580px',marginLeft:100 }} // 800 piksel kengligida va 400 piksel bo'yligida
+                            style={{
+                                width: '1200px',
+                                height: '580px',
+                                marginLeft: 100
+                            }} // 800 piksel kengligida va 400 piksel bo'yligida
                         >
                             {mapState.map((item) => {
                                 return (
                                     <Placemark
                                         key={item.id}
                                         geometry={[item.latitude, item.longitude]}
-                                        options={{ balloonContentLayout: template }}
+                                        options={{balloonContentLayout: template}}
                                         modules={['geoObject.addon.balloon']}
                                     />
                                 );

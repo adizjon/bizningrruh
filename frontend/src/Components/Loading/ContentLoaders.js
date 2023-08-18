@@ -11,7 +11,16 @@ function ContentLoader() {
 
     return (
         <div>
-            <img style={{marginLeft:500,marginTop:200}} src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921000000" alt=""/>
+            <img
+                style={{
+                    marginTop: 200,
+                    width:250,
+                    height:200,
+                    background: "none",  // Set background to "none"
+                }}
+                src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921000000"
+                alt=""
+            />
         </div>
     );
 }

@@ -14,6 +14,8 @@ import ContentLoader from "../Loading/ContentLoaders";
 import Hello from "../UniversalFilter/Hello";
 import "bootstrap/dist/css/bootstrap.min.css"
 import ApiCall from "../Api/apiCall";
+import UniversalFilter from "../UniversalFilter/UniversalFilter";
+
 function Client(props) {
     const [isOpen, setIsOpen] = useState(false)
     const [territories, setTerritories] = useState([])
@@ -46,8 +48,10 @@ function Client(props) {
     const [isVisible, setIsVisible] = useState(false)
 
     const [loading, setLoading] = useState(false)
-     const [filtered,setFiltered]=useState([])
-     const [drawOfFilter,setDrawOfFilter]=useState(false)
+    const [filtered, setFiltered] = useState([])
+    const [drawOfFilter, setDrawOfFilter] = useState(false)
+    const [terretory, setTerretory] = useState([])
+
     useEffect(() => {
         axios({
             url: "http://localhost:8080/api/customerCategory",
@@ -70,6 +74,18 @@ function Client(props) {
         setTimeout(() => {
             setLoading(false)
         }, 1000)
+        props.getClients()
+        axios({
+            url: "http://localhost:8080/api/customerCategory", method: "get"
+        }).then(res => {
+            setCategory(res.data)
+        })
+        ApiCall({
+            url: "/api/territory?page=1&size=10",
+            method: "GET"
+        }).then(res => {
+            setTerretory(res.data.content)
+        })
     }, [])
 
     function territoryHandler(e) {
@@ -129,12 +145,9 @@ function Client(props) {
     }
 
 
-    useEffect(() => {
-        props.getClients()
-    }, [])
-
     function saveCategory(e) {
         e.preventDefault()
+        console.log(e.target)
         props.saveClient({
             name: e.target[2].value,
             address: e.target[4].value,
@@ -151,11 +164,70 @@ function Client(props) {
 
     }
 
+    const [category, setCategory] = useState([])
+
+    const multiple = [
+        {
+            name: "city",
+            value: terretory.map(item=>({
+                label:item.title,
+                value:item.id
+            })),
+            defaultValue: "city"
+        },
+        {
+            name: "customer category",
+            value: category?.map(item =>
+                ({
+                    label: item.code,
+                    value: item.id
+
+                })
+            ),
+            defaultValue: "customer category"
+        }
+
+    ]
+    const select = [
+        {
+            name: "active",
+            value: [
+                {
+                    label: "active",
+                    value: "active"
+                }, {
+                    label: "no active",
+                    value: "no active"
+                }
+            ],
+            defaultValue: "active"
+        },
+
+        {
+            name: "tin",
+            value: [
+                {
+                    label: "Tin",
+                    value: "Tin"
+                }, {
+                    label: "With Tin",
+                    value: "With Tin"
+                }, {
+                    label: "Without Tin",
+                    value: "Without Tin"
+                }
+            ],
+            defaultValue: "tin"
+        }
+
+    ]
+
 
     return (
         <div>
+
             {
-                loading ? <div>
+                loading ? <div className={"flex justify-center items-center w-100"} style={{marginLeft: 500}}>
                         <ContentLoader/>
                     </div>
                     : <div className={"container p-4"}>
@@ -212,27 +284,30 @@ function Client(props) {
                         <button onClick={() => handleVisible(true)}
                                 className={"bg-green-500 shadow px-3 py-2 rounded text-white m-4 mt-0"}>Add Client
                         </button>
+                        <UniversalFilter multiple={multiple} url={"http://localhost:8080/api/client"}
+                                         select={select}/>
+
                         {/*<div>*/}
                         {/*    <UniversalFilter multiple={multiple} select={select}/>*/}
                         {/*    <button style={{width:"200px",height:"100px",backgroundColor:"blue"}}>Filter</button>*/}
                         {/*</div>*/}
-                    <div className={"d-flex"}>
-                        <select className={"form-select"}>
-                            <option value={""} className={"form-select-item"}>All</option>
-                            <option value={"true"} className={"form-select-item"}>Active</option>
-                            <option value={"false"} className={"form-select-item"}>Inactive</option>
-                        </select>
-                        <input className={"form-control"} placeholder={"City"}/>
-                        <input className={"form-control"} placeholder={"CustomerCategory"}/>
-                        <input className={"form-control"} placeholder={"Day"}/>
-                        <input className={"form-control"} placeholder={"All weeks"}/>
-                    </div>
-                    <div className={"d-flex mt-2"}>
-                        <input className={"form-control"} placeholder={"Tin"}/>
-                        <input className={"form-control"} placeholder={"Location"}/>
-                        <input className={"form-control"} placeholder={"With Inventory"}/>
-                        <button  className={"btn btn-info"}>Filter</button>
-                    </div>
+                        {/*<div className={"d-flex"}>*/}
+                        {/*    <select className={"form-select"}>*/}
+                        {/*        <option value={""} className={"form-select-item"}>All</option>*/}
+                        {/*        <option value={"true"} className={"form-select-item"}>Active</option>*/}
+                        {/*        <option value={"false"} className={"form-select-item"}>Inactive</option>*/}
+                        {/*    </select>*/}
+                        {/*    <input className={"form-control"} placeholder={"City"}/>*/}
+                        {/*    <input className={"form-control"} placeholder={"CustomerCategory"}/>*/}
+                        {/*    <input className={"form-control"} placeholder={"Day"}/>*/}
+                        {/*    <input className={"form-control"} placeholder={"All weeks"}/>*/}
+                        {/*</div>*/}
+                        {/*<div className={"d-flex mt-2"}>*/}
+                        {/*    <input className={"form-control"} placeholder={"Tin"}/>*/}
+                        {/*    <input className={"form-control"} placeholder={"Location"}/>*/}
+                        {/*    <input className={"form-control"} placeholder={"With Inventory"}/>*/}
+                        {/*    <button  className={"btn btn-info"}>Filter</button>*/}
+                        {/*</div>*/}
                         <div className={"mt-3"}>
                             <Table
                                 dataProps={[]}
@@ -243,7 +318,9 @@ function Client(props) {
                                 columnOrderMode={true}
                                 changeSizeModeOptions={[5, 10, 20, 30, 40, 50]}
                             />
+
                         </div>
+
                     </div>
             }
         </div>

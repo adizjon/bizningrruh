@@ -8,8 +8,10 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/client")
@@ -17,18 +19,21 @@ import java.util.UUID;
 @CrossOrigin
 public class ClientController {
     private final ClientService clientService;
-    private final ClientRepo clientRepo;
 
 
     @GetMapping
     public HttpEntity<?> getClients(
-            @RequestParam(defaultValue = "") List<UUID> city,
-            @RequestParam(defaultValue = "") List<UUID> customerCategory,
+            @RequestParam(defaultValue = "") String city,
+            @RequestParam(defaultValue = "") String customerCategory,
             @RequestParam(defaultValue = "") Boolean active,
             @RequestParam(defaultValue = "") Boolean tin,
-            @RequestParam(defaultValue = "") String search
+            @RequestParam(defaultValue = "") String search,
+            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(defaultValue = "10") Integer size
     ) {
-       return clientService.getClients(city, customerCategory, active, tin,search);
+        List<UUID> cities = city.isEmpty() ? List.of() : Arrays.stream(city.split(",")).map(UUID::fromString).toList();
+        List<Integer> customerCategories = customerCategory.isEmpty() ? List.of() : Arrays.stream(city.split(",")).map(Integer::parseInt).toList();
+        return clientService.getClients(cities, customerCategories, active, tin, search,page,size);
     }
 
     @GetMapping("/search")
